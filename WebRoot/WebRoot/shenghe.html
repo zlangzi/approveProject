@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="gbtags.com">
+<title>科技部科技项目审批系统</title>
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<!-- Fonts -->
+<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
+	type="text/css">
+<link href="css/animate.css" rel="stylesheet" />
+<!-- Squad theme CSS -->
+<link href="css/style.css" rel="stylesheet">
+<link href="color/default.css" rel="stylesheet">
+<link rel="stylesheet" href="css/common.css" />
+<!-- 基本样式 -->
+<link href="css/bootstrap-responsive.min.css" rel="stylesheet" />
+<link href="css/bwizard.min.css" rel="stylesheet" />
+<link href="css/shengbao.css" rel="stylesheet" type="text/css">
+<link href="css/user_c.css" rel="stylesheet" type="text/css">
+<link href="css/demo_page.css" rel="stylesheet" />
+<link href="css/demo_table.css" rel="stylesheet" />
+<style type="text/css">
+		table tbody tr td a:hover{
+			color: #0f5fc5; /*鼠标经过的颜色变化*/
+		cursor: pointer;
+		text-decoration:underline;
+		}
+    	table thead tr th{
+    	text-align:center;
+    	}
+
+</style>
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+	<!-- Preloader -->
+	<div id="preloader">
+		<div id="load"></div>
+	</div>
+	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+	<!-- /.container --> </nav>
+	<!-- Section: intro -->
+	<!-- /Section: services -->
+	<article> <img src="img/bg1.jpg"
+		style="width: 100%; height: 200px;" alt="">
+	<div class="container1 ">
+		<div class=" panel panel-default">
+			<div id="bar" class=" panel-heading">
+				<h3 class="panel-titile">审核专家审核系统</h3>
+				<ul class="nav nav-tabs nav-justified">
+					<li class="active"><a href="#sb_1" data-toggle="tab">立项审核</a></li>
+					<li><a href="#sb_2" data-toggle="tab">实施审核</a></li>
+					<li><a href="#sb_3" data-toggle="tab">验收审核</a></li>
+					<li><a href="#sb_4" data-toggle="tab">成果审核</a></li>
+					<li><a href="#sb_5" data-toggle="tab">奖励审核</a></li>
+				</ul>
+			</div>
+			<div class="panel-body">
+				<div class="tab-content">
+
+					<div class="tab-pane fade in active" id="sb_1">
+						<div id="mainContent1">
+							
+						</div>
+						<div id="callBackPager1"></div>
+					</div>
+					<div class="tab-pane fade in " id="sb_2">
+						<div id="mainContent2">
+							
+
+						</div>
+						<div id="callBackPager2"></div>
+					</div>
+					<div class="tab-pane fade in " id="sb_3">
+						<div id="mainContent3"></div>
+						<div id="callBackPager3"></div>
+					</div>
+					<div class="tab-pane fade in " id="sb_4">
+						<div id="mainContent4"></div>
+						<div id="callBackPager4"></div>
+					</div>
+					<div class="tab-pane fade in " id="sb_5">
+						<div id="mainContent5"></div>
+						<div id="callBackPager5"></div>
+					</div>
+			
+					<div class="modal fade" id="myF1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+												&times;
+											</button>
+											<h4 class="modal-title" id="myModalLabel1">
+												回执意见
+											</h4>
+										</div>
+										<div class="modal-body">
+											<form id="ispassform" role="form" enctype="multipart/form-data" method="post" action="uploadApproveAttachment.action">
+												
+											  <div class="form-group">
+												  <div class="input-group input-group-lg">
+													  <span class="input-group-addon">意见填写</span>
+													  <textarea name="comments" style="min-height: 100px;" class="form-control" placeholder="请填写回执信息"></textarea>
+												</div>
+											     <input id="application_id" name="application_id" type="hidden">
+											   <div class="input-group input-group-lg" style="margin: auto;font-size: 18px;">
+											   <input id="dispass" name="status" type="radio" value="-1" checked="true"><label for="dispass" >驳回</label>
+												<input id="pass" name="status" type="radio" value="2"><label for="pass" >通过</label>
+											   </div>
+												
+											  
+											  </div>
+
+											  <button id='forsure_btn' type="button" class="btn btn-default">确认</button>
+											</form>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+											</button>
+
+										</div>
+									</div><!-- /.modal-content -->
+								</div><!-- /.modal -->
+							</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</article>
+	<div id="reglog" ></div>
+	<footer></footer>
+	<!-- Core JavaScript Files -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.easing.min.js"></script>
+	<script src="js/jquery.scrollTo.js"></script>
+	<script src="js/wow.min.js"></script>
+	<!-- Custom Theme JavaScript -->
+	<script src="js/custom.js"></script>
+	<script src="js/jquery.hDialog.js"></script>
+	<script src="js/bwizard.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="js/jquery.dataTables.js"></script>
+	<script type="text/javascript" src="js/loadFile.js"></script>
+	<script type="text/javascript" src="js/jquery.dataTables.js"></script>
+
+	<link rel="stylesheet"
+		href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.css">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script
+		src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.js"></script>
+
+	<!-- Latest compiled and minified Locales -->
+	<script
+		src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/locale/bootstrap-table-zh-CN.min.js"></script>
+	<script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fac45a0f68a119fbe4d1c4c3ac3044dbd' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+<script src="js/extendPagination.js"></script>
+    <script type="text/javascript">
+   $(function(){
+	   $('#bar > ul >li').each(function(i){
+		   $(this).bind('click',function(){
+			   //请求数据，并建立表格
+			   getdata(i);
+		   })
+			
+	   })
+	  
+	   $('#bar > ul >li').eq(0).click();
+	   forsure_btn_click();
+   })
+        function callBackPagination(stage,data,showCount,limit) {
+              createTable(1, limit, data,stage);
+            //翻页的东西
+            var tag=stage+1;
+            
+                $('#callBackPager'+tag).extendPagination({
+                    totalCount: data.length,
+                    showCount: showCount,
+                    limit: limit,
+                    callback: function (curr, limit, totalCount) {
+                        createTable(curr, limit,data,stage);
+                    }
+                });
+
+            
+        }
+        function createTable(currPage, limit,data,stage) {
+        	if(data!=""){
+        		var html = [], showNum = limit;
+                if (data.length - (currPage * limit) < 0) showNum = data.length - ((currPage - 1) * limit);
+                html.push(' <table id=table'+stage+' class="table table-hover piece" style="margin-left: 0;">');
+                html.push(' <caption>待审核列表(' + data.length + ')</caption>');
+                html.push(' <thead><tr><th>项目名称</th><th>项目类别</th><th>立项时间</th><th>负责人</th></tr></thead><tbody>');
+    			//数据加载
+                for(var i=0;i<showNum;i++){
+                		html.push('<tr title="'+data[(currPage-1)*limit+i].description+'"><input type="hidden" value="'+data[(currPage-1)*limit+i].id+'"/><td style="vertical-align: inherit;"><a>'+data[(currPage-1)*limit+i].topic+'</a></td><td style="vertical-align: inherit;">'+data[(currPage-1)*limit+i].category+'</td><td style="vertical-align: inherit;">'+getDateTime(new Date(data[(currPage-1)*limit+i].createtime))+'</td><td style="vertical-align: inherit;">'+data[(currPage-1)*limit+i].leaderName+'</td><td style="vertical-align: inherit;"><div class="btn-group"><a  class="btn btn-sm btn-success">下载附件</a><a  class="btn btn-sm btn-success">开始审核</a><a class="btn btn-sm btn-success">审核完成</a></div></td></tr>');
+                }
+                html.push('</tbody></table>');
+                
+                    var mainObj =  $('#mainContent'+(stage+1));
+                    mainObj.empty();
+                    mainObj.html(html.join(''));
+//                     btnInTable_click(stage);
+    			btnInTable_click(stage);
+        	}else{
+        		var mainObj =  $('#mainContent'+(stage+1));
+        		mainObj.html("没有合适数据");
+        	}
+            
+        }
+        function getdata(obj){
+			$.post("getAPPListByStage_approver.action",{stage:obj},function(data){
+				console.log(data);
+				callBackPagination(obj,data,5,10);
+			})
+        }
+       
+        function getDateTime(date){
+        	
+        	return ""+date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate();
+        }
+        
+       function forsure_btn_click(){
+    	   $('#forsure_btn').bind('click',function(){
+    		   $.post("finishApprove.action",$('#ispassform').serialize(),function(data){
+    			   	if(data=="success"){
+    			   		$.tooltip("操作成功！",2000,true);
+    			   		
+    			   		$('#myF1').modal("hide");
+    			   		location.href;
+    			   	}
+    		   })
+    	   })
+       }
+       
+       function btnInTable_click(stage){
+  		 $('#table'+stage+' tbody >tr').each(function(){
+  			 $(this).find("td>div>a").each(function(i){
+  				 if(i==0){
+  					$(this).attr('href',"attachmentDownload_app.action?id="+$(this).parent().parent().parent().find("input").val());
+  						
+  					}
+  					else if(i==1){
+  						
+  							$(this).bind('click',function(){
+  	  							$.post('startApprove.action',{id:$(this).parent().parent().parent().find("input").val()},function(data){
+  	  								if(data=="success"){
+  	  									$.tooltip("该项目进入审核状态！",2000,true);
+  	  									location.href=location.href;
+  	  								}
+  	  							})
+  	  						})
+  						}else{
+  						
+  							$(this).bind('click',function(){
+  	  							$('#application_id').val($(this).parent().parent().parent().find("input").val());
+  	  							$('#myF1').modal();
+  	  						})
+  						}
+  					
+  					
+  			 })
+  	    	})
+  	 }
+    </script>
+
+
+</body>
+
+</html>
