@@ -1,5 +1,5 @@
 $(function(){
-    	$('nav').load("http://localhost:8080/approveProject/html/nav.html");
-        $('#reglog').load("http://localhost:8080/approveProject/html/register.html");
-        $('footer').load("http://localhost:8080/approveProject/html/footer.html")
+    	$('nav').load("/approveProject/html/nav.html");
+        $('#reglog').load("/approveProject/html/register.html");
+        $('footer').load("/approveProject/html/footer.html")
     })

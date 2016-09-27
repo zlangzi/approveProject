@@ -7,18 +7,18 @@
     <meta name="author" content="gbtags.com">
     <title>科技部科技项目审批系统</title>
     <!-- Bootstrap Core CSS -->
-    <link href="http://localhost:8080/approveProject/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/approveProject/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <!-- Fonts -->
-    <link href="http://localhost:8080/approveProject/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="http://localhost:8080/approveProject/css/animate.css" rel="stylesheet" />
+    <link href="/approveProject/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/approveProject/css/animate.css" rel="stylesheet" />
     <!-- Squad theme CSS -->
-    <link href="http://localhost:8080/approveProject/css/style.css" rel="stylesheet">
-    <link href="http://localhost:8080/approveProject/color/default.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://localhost:8080/approveProject/css/common.css" />
+    <link href="/approveProject/css/style.css" rel="stylesheet">
+    <link href="/approveProject/color/default.css" rel="stylesheet">
+    <link rel="stylesheet" href="/approveProject/css/common.css" />
     <!-- 基本样式 -->
-    <link href="http://localhost:8080/approveProject/css/bootstrap-responsive.min.css" rel="stylesheet" />
-    <link href="http://localhost:8080/approveProject/css/bwizard.min.css" rel="stylesheet" />
-    <link href="http://localhost:8080/approveProject/css/shengbao.css" rel="stylesheet" type="text/css">
+    <link href="/approveProject/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="/approveProject/css/bwizard.min.css" rel="stylesheet" />
+    <link href="/approveProject/css/shengbao.css" rel="stylesheet" type="text/css">
     <style type="text/css">
     .scrollspy-example {
         height: 200px;
@@ -38,7 +38,7 @@
     <!-- Section: intro -->
     <!-- /Section: services -->
     <article>
-        <img src="http://localhost:8080/approveProject/img/bg1.jpg" style="width:100%;height:200px;" alt="">
+        <img src="/approveProject/img/bg1.jpg" style="width:100%;height:200px;" alt="">
         <div class="content container ">
             <div class=" panel panel-default">
                 <div id="app_bar" class=" panel-heading">
@@ -122,18 +122,18 @@
     <div id="reglog"></div>
     <footer></footer>
     <!-- Core JavaScript Files -->
-    <script src="http://localhost:8080/approveProject/js/jquery.min.js"></script>
-    <script src="http://localhost:8080/approveProject/js/bootstrap.min.js"></script>
-    <script src="http://localhost:8080/approveProject/js/jquery.easing.min.js"></script>
-    <script src="http://localhost:8080/approveProject/js/jquery.scrollTo.js"></script>
-    <script src="http://localhost:8080/approveProject/js/wow.min.js"></script>
+    <script src="/approveProject/js/jquery.min.js"></script>
+    <script src="/approveProject/js/bootstrap.min.js"></script>
+    <script src="/approveProject/js/jquery.easing.min.js"></script>
+    <script src="/approveProject/js/jquery.scrollTo.js"></script>
+    <script src="/approveProject/js/wow.min.js"></script>
     <!-- Custom Theme JavaScript -->
-    <script src="http://localhost:8080/approveProject/js/custom.js"></script>
-    <script src="http://localhost:8080/approveProject/js/jquery.hDialog.js"></script>
-    <script type="text/javascript" src="http://localhost:8080/approveProject/js/loadFile.js"></script>
-    <script type="text/javascript" src="http://localhost:8080/approveProject/js/jquery.form.js">
+    <script src="/approveProject/js/custom.js"></script>
+    <script src="/approveProject/js/jquery.hDialog.js"></script>
+    <script type="text/javascript" src="/approveProject/js/loadFile.js"></script>
+    <script type="text/javascript" src="/approveProject/js/jquery.form.js">
     </script>
-    <script type="text/javascript" src="http://localhost:8080/approveProject/js/extendPagination.js">
+    <script type="text/javascript" src="/approveProject/js/extendPagination.js">
     </script>
     <script type="text/javascript">
     var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
@@ -154,7 +154,7 @@
 		 approveDetails(parseInt(paraString[1]));
 	})
 	function getAppDetails(id){
-		$.get("http://localhost:8080/approveProject/getOneApp.action",{id:id},function(data){
+		$.get("/approveProject/getOneApp.action",{id:id},function(data){
 			$('#topic1').val(data.topic);
 			$('#category_id1').val(data.category_id);
 			$('#content1').text(data.content);
@@ -163,7 +163,7 @@
 	}
 	//查询项目类别
     function getCategorys(){
-		 $.post("http://localhost:8080/approveProject/getCategorys.action",function(data){
+		 $.post("/approveProject/getCategorys.action",function(data){
      		for(var i=0;i<data.length;i++){
      			if(data[i].name!='根'){
      				$('#category_id1').append("<option title='"+data[i].description+"' value='"+data[i].id+"'>"+data[i].name+"</option>");
@@ -173,25 +173,25 @@
 		 });
     }
 	function getAllAttachment(id){
-		$.get("http://localhost:8080/approveProject/getAllAttachment.action",{app_id:id},function(data){
+		$.get("/approveProject/getAllAttachment.action",{app_id:id},function(data){
 			for(var i=0;i<data.length;i++){
-				$('#attachments').append('<a href="http://localhost:8080/approveProject/attachmentDownloadById.action?id='+data[i].id+'" style="text-decoration:underline;">附件'+(i+1)+'</a><br>')
+				$('#attachments').append('<a href="/approveProject/attachmentDownloadById.action?id='+data[i].id+'" style="text-decoration:underline;">附件'+(i+1)+'</a><br>')
 			}
 		})
 	}
 	var bulOn=false;
 	function approveDetails(app_id){
-		$.get("http://localhost:8080/approveProject/getApproveDetails.action",{app_id:app_id},function(data){
+		$.get("/approveProject/getApproveDetails.action",{app_id:app_id},function(data){
 			
 			for(var i=0;i<data.length;i++){
 				$('#details').append("<li>"+getDateTime(new Date(data[i].approvetime))+"----"+getStatus(data[i].status)+"----"+data[i].comments+"</li>");
 				bulOn=data[i].status==2?true:false;
 			}
 			if(bulOn){
-				$('#myimage1').attr("src","http://localhost:8080/approveProject/img/pic_bulbon.gif");
+				$('#myimage1').attr("src","/approveProject/img/pic_bulbon.gif");
 			}
 			else
-				$('#myimage1').attr("src","http://localhost:8080/approveProject/img/pic_bulboff.gif")
+				$('#myimage1').attr("src","/approveProject/img/pic_bulboff.gif")
 		})
 	}
 	 function getDateTime(date){

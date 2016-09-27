@@ -11,7 +11,6 @@ import com.approveproject.springmvc.pojo.ApproveAttachment;
 import com.approveproject.springmvc.pojo.UserAttachment;
 import com.approveproject.springmvc.service.IApproveAttachmentService;
 import com.approveproject.springmvc.service.IUserAttachmentService;
-import com.sun.xml.internal.ws.api.message.Attachment;
 /**
  * 申报审核附件上传接口实现类
  * @ClassName: ApproveAttachmentServiceImpl 
@@ -56,7 +55,7 @@ public class ApproveAttachmentServiceImpl implements IApproveAttachmentService {
 	}
 
 	@Override
-	public List<Attachment> queryAllByAppID(Integer app_id) {
+	public List<ApproveAttachment> queryAllByAppID(Integer app_id) {
 		// TODO Auto-generated method stub
 		return approveAttachmentMapper.queryAllByAppID(app_id);
 	}

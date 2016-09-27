@@ -92,9 +92,9 @@
         </div>
     </div>
 </body>
-<script type="text/javascript" src="http://localhost:8080/approveProject/js/jquery.min.js"></script>
-<link href="http://localhost:8080/approveProject/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="http://localhost:8080/approveProject/js/extendPagination.js">
+<script type="text/javascript" src="/approveProject/js/jquery.min.js"></script>
+<link href="/approveProject/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/approveProject/js/extendPagination.js">
 </script>
 <!-- Latest compiled and minified CSS -->
 <script>
@@ -108,7 +108,7 @@ $(function(){
 
 
 function getdata(stage) {
-    $.post("http://localhost:8080/approveProject/getAPPListByStage_bg.action", {
+    $.post("/approveProject/getAPPListByStage_bg.action", {
         stage: (stage)
     }, function(data) {
         if (data != "") {
@@ -175,7 +175,7 @@ function getDateTime(date){
 function tr_click(stage){
 	$('#table'+stage+' tbody >tr').each(function(){
 		$(this).bind('click',function(){
-			window.location.href="http://localhost:8080/approveProject/html/appdetails.html?app_id="+$(this).find("input").val();
+			window.location.href="/approveProject/html/appdetails.html?app_id="+$(this).find("input").val();
 		})
 	})
 }

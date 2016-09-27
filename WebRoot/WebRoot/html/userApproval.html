@@ -101,7 +101,7 @@
     </div>
 </body>
 
-<script type="text/javascript" src="../js/extendPagination.js"></script>
+<script type="text/javascript" src="/approveProject/js/extendPagination.js"></script>
 <script>
 $(function(){
 	$('#myTab >li >a').each(function(i){
@@ -121,7 +121,7 @@ function getdata(obj) {
     else{
     	passed=1;
     }
-    $.post("http://localhost:8080/approveProject/getUserApp.action", {
+    $.post("/approveProject/getUserApp.action", {
     	status: passed
     }, function(data) {
         if (data != "") {
@@ -162,10 +162,10 @@ function createTable(currPage, limit, data, stage) {
     //数据加载
     for (var i = 0; i < showNum; i++) {
     	if(stage==0){
-    		html.push('<tr>  <input type="hidden" value="' + data[(currPage - 1) * limit + i].id + '"/><td style="vertical-align: inherit;">' + data[(currPage - 1) * limit + i].username + '</td><td style="vertical-align: inherit;">' + data[(currPage - 1) * limit + i].name + '</td><td style="vertical-align: inherit;">' + data[(currPage - 1) * limit + i].roleName + '</td><td style="vertical-align: inherit;"><a href="http://localhost:8080/approveProject/attachmentDownloadById.action?id="'+data[(currPage - 1) * limit + i].id+'>附件下载<a></td><td><div class="btn-group"><button type="button" class="btn btn-danger">驳回</button><button type="button" class="btn btn-success">通过</button></div></td></tr>');
+    		html.push('<tr>  <input type="hidden" value="' + data[(currPage - 1) * limit + i].id + '"/><td style="vertical-align: inherit;">' + data[(currPage - 1) * limit + i].username + '</td><td style="vertical-align: inherit;">' + data[(currPage - 1) * limit + i].name + '</td><td style="vertical-align: inherit;">' + data[(currPage - 1) * limit + i].roleName + '</td><td style="vertical-align: inherit;"><a href="/approveProject/attachmentDownload_user.action?id="'+data[(currPage - 1) * limit + i].id+'>附件下载<a></td><td><div class="btn-group"><button type="button" class="btn btn-danger">驳回</button><button type="button" class="btn btn-success">通过</button></div></td></tr>');
     	}
     	else{
-    		html.push('<tr>  <input type="hidden" value="' + data[(currPage - 1) * limit + i].id + '"/><td style="vertical-align: inherit;">' + data[(currPage - 1) * limit + i].username + '</td><td style="vertical-align: inherit;">' + data[(currPage - 1) * limit + i].name + '</td><td style="vertical-align: inherit;">' + data[(currPage - 1) * limit + i].roleName + '</td><td style="vertical-align: inherit;"><a href="http://localhost:8080/approveProject/attachmentDownloadById.action?id="'+data[(currPage - 1) * limit + i].id+'>附件下载<a></td><td><div class="btn-group"><button type="button" class="btn btn-danger">撤销</button></div></td></tr>');
+    		html.push('<tr>  <input type="hidden" value="' + data[(currPage - 1) * limit + i].id + '"/><td style="vertical-align: inherit;">' + data[(currPage - 1) * limit + i].username + '</td><td style="vertical-align: inherit;">' + data[(currPage - 1) * limit + i].name + '</td><td style="vertical-align: inherit;">' + data[(currPage - 1) * limit + i].roleName + '</td><td style="vertical-align: inherit;"><a href="/approveProject/attachmentDownload_user.action?id="'+data[(currPage - 1) * limit + i].id+'>附件下载<a></td><td><div class="btn-group"><button type="button" class="btn btn-danger">撤销</button></div></td></tr>');
     	}
     }
     html.push('</tbody></table>');
@@ -209,7 +209,7 @@ function btnInTable_click(stage){
 }
 //根据传入的值更改用户状态
 function updateUserRoleStatus(id,status){
-	$.post("http://localhost:8080/approveProject/updateUserRoleStatus.action",{id:id,status:status},function(){
+	$.post("/approveProject/updateUserRoleStatus.action",{id:id,status:status},function(){
 		
 		location.href=location.href;
 	})

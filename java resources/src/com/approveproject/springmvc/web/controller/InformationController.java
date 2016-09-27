@@ -32,11 +32,11 @@ public class InformationController {
 	
 	@RequestMapping("getAllInfos")
 	@ResponseBody
-	public List<Information> getAllInfos() throws Exception{
+	public List<Information> getAllInfos(String status) throws Exception{
 		
 		
 		
-		return informationService.getAllInfos(0,0);
+		return informationService.getAllInfosByStatus(status);
 	}
 	
 	

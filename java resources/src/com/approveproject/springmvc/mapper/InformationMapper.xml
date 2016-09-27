@@ -150,5 +150,8 @@
 
 WHERE i1.publisher_id=u.id and i1.type_id=i2.id AND i1.`status`=#{status,jdbcType=INTEGER}
   </select>
+  <select id="getAllInfosByStatus" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List"></include> from information_table where status=#{status,jdbcType=CHAR}
   
+  </select>
 </mapper>

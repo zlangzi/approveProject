@@ -23,4 +23,6 @@ public interface InformationMapper {
 	List<Information> getAllInfos();
     
 	List<InfoPublisherCategory> getInfoCategoryByStatus(Integer status);
+
+	List<Information> getAllInfosByStatus(String status);
 }

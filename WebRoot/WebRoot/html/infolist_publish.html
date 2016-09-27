@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Insert title here</title>
-    <script src="http://localhost:8080/approveProject/js/jquery.min.js"></script>
-    <script src="http://localhost:8080/approveProject/js/bootstrap.min.js"></script>
-    <link href="http://localhost:8080/approveProject/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <script src="/approveProject/js/jquery.min.js"></script>
+    <script src="/approveProject/js/bootstrap.min.js"></script>
+    <link href="/approveProject/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -43,14 +43,14 @@
         <div id="callBackPager"></div>
     </div>
 </body>
-<script type="text/javascript" src="../js/extendPagination.js"></script>
+<script type="text/javascript" src="/approveProject/js/extendPagination.js"></script>
 <script>
 $(function(){
 	getdata(1) ;
 	
 })
 function getdata(obj) {
-    $.post("http://localhost:8080/approveProject/getInfoCategoryByStatus.action", {
+    $.post("/approveProject/getInfoCategoryByStatus.action", {
         status:obj
     }, function(data) {
         if (data != "") {
@@ -108,7 +108,7 @@ function btnIntableClick(){
 	$('tbody>tr').each(function(){
 		$(this).find("td >div >button").bind("click",function(){
 			
-			$.post("http://localhost:8080/approveProject/delInfoByID.action",{id:$(this).parent().parent().parent().find("input").val()},function(data){
+			$.post("/approveProject/delInfoByID.action",{id:$(this).parent().parent().parent().find("input").val()},function(data){
 					if(data!="failed"){
 						alert("删除成功！");
 						location.href=location.href;

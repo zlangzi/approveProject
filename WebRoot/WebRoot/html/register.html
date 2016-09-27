@@ -164,7 +164,7 @@
             	//验证通过，提交表单，异步提交
             	if(reg_check()){
             		
-            		$.post("http://localhost:8080/approveProject/register.action",
+            		$.post("/approveProject/register.action",
             				$('#regForm').serialize(),
             				function(success){
             					if(success=="success"){
@@ -233,7 +233,7 @@
         }
         function isAviliable(username){
         	
-        	$.post("http://localhost:8080/approveProject/checkUsername.action",{username:username},function(data){
+        	$.post("/approveProject/checkUsername.action",{username:username},function(data){
         		if(data=="OK"){
         			usernameCheck= true;
         		}
@@ -313,7 +313,7 @@
         }
         //访问session中的参数，页面登录状态保持
        function getSession (){
-    	   $.get("http://localhost:8080/approveProject/getSession.action",function(data){
+    	   $.get("/approveProject/getSession.action",function(data){
     		   	
     		   	changeStatus(data);
     		   	
@@ -333,31 +333,31 @@
 			if(user.role_id==null){
         		//身份验证
         		e5.html("欢迎您！初始账户：");//填充用户名
-        		e3.append('<li><a href="http://localhost:8080/approveProject/identify.html" class="rotateInDownRight ">身份申请</a></li>')
+        		e3.append('<li><a href="/approveProject/identify.html" class="rotateInDownRight ">身份申请</a></li>')
         		
         	}
 			else if(user.role_id==1){
 				//管理员 后台页面
 				e5.html("欢迎您！管理员：");//填充用户名
-				e3.append('<li><a href="http://localhost:8080/approveProject/bg_management.html" class="rotateInDownRight ">后台管理</a></li>')
+				e3.append('<li><a href="/approveProject/bg_management.html" class="rotateInDownRight ">后台管理</a></li>')
 			}else if(user.role_id==2 && expand.passed==1){
 				//项目负责人
 				e5.html("欢迎您！项目负责人：");//填充用户名
-				e3.append('<li><a href="http://localhost:8080/approveProject/user_center_project_shengbao.html" class="rotateInDownRight ">项目状态查看</a></li>')
-				e3.append('<li><a href="http://localhost:8080/approveProject/shengbao.html" class="rotateInDownRight ">项目申报</a></li>')
+				e3.append('<li><a href="/approveProject/user_center_project_shengbao.html" class="rotateInDownRight ">项目状态查看</a></li>')
+				e3.append('<li><a href="/approveProject/shengbao.html" class="rotateInDownRight ">项目申报</a></li>')
 				
 			}else if(user.role_id==3 && expand.passed==1){
 				//审核专家
 				e5.html("欢迎您！专家：");//填充用户名
-				e3.append('<li><a href="http://localhost:8080/approveProject/user_center_project_shenghe.html" class="rotateInDownRight ">项目状态查看</a></li>')
-				e3.append('<li><a href="http://localhost:8080/approveProject/shenghe.html" class="rotateInDownRight ">项目审核</a></li>')
+				e3.append('<li><a href="/approveProject/user_center_project_shenghe.html" class="rotateInDownRight ">项目状态查看</a></li>')
+				e3.append('<li><a href="/approveProject/shenghe.html" class="rotateInDownRight ">项目审核</a></li>')
 			}
 			else {
 				e5.html("欢迎您！初始账户：");//填充用户名
 				e3.append('<li><a href="#" class="rotateInDownRight ">身份验证中，多看看公告</a></li>')
 			}
 			e5.append(user.username+"<span class='glyphicon glyphicon-chevron-down'></span>")
-			e3.append('<li><a href="http://localhost:8080/approveProject/user_message.html" class="rotateInDownRight ">个人信息</a></li>')
+			e3.append('<li><a href="/approveProject/user_message.html" class="rotateInDownRight ">个人信息</a></li>')
             e3.append('<li><a href="#" id="logout"  class="rotateInDownRight login-dialog">退出</a></li>');
 // 			window.location.href=$('#center').val();
 			$('#logout').bind('click',function(){
@@ -368,8 +368,8 @@
         	
         }
         function logout(){
-        	$.post("http://localhost:8080/approveProject/logout.action",function(status){
-        		window.location.href="http://localhost:8080/approveProject/";//windows对象
+        	$.post("/approveProject/logout.action",function(status){
+        		window.location.href="/approveProject/";//windows对象
         	});//注销
         	
         }

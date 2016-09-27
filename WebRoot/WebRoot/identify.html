@@ -7,18 +7,18 @@
     <meta name="author" content="gbtags.com">
     <title>科技部科技项目审批系统</title>
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/approveProject/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <!-- Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="css/animate.css" rel="stylesheet" />
+    <link href="/approveProject/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/approveProject/css/animate.css" rel="stylesheet" />
     <!-- Squad theme CSS -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="color/default.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/common.css" />
+    <link href="/approveProject/css/style.css" rel="stylesheet">
+    <link href="/approveProjectcolor/default.css" rel="stylesheet">
+    <link rel="stylesheet" href="/approveProject/css/common.css" />
     <!-- 基本样式 -->
-    <link href="css/bootstrap-responsive.min.css" rel="stylesheet" />
-    <link href="css/bwizard.min.css" rel="stylesheet" />
-    <link href="css/shengbao.css" rel="stylesheet" type="text/css">
+    <link href="/approveProject/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="/approveProject/css/bwizard.min.css" rel="stylesheet" />
+    <link href="/approveProject/css/shengbao.css" rel="stylesheet" type="text/css">
     <style type="text/css">
     .linebr { 
 clear: both; /* 清除左右浮动 */   
@@ -145,17 +145,17 @@ white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
     <div id="reglog"></div>
     <footer></footer>
     <!-- Core JavaScript Files -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/jquery.scrollTo.js"></script>
-    <script src="js/wow.min.js"></script>
+    <script src="/approveProject/js/jquery.min.js"></script>
+    <script src="/approveProject/js/bootstrap.min.js"></script>
+    <script src="/approveProject/js/jquery.easing.min.js"></script>
+    <script src="/approveProject/js/jquery.scrollTo.js"></script>
+    <script src="/approveProject/js/wow.min.js"></script>
     <!-- Custom Theme JavaScript -->
-    <script src="js/custom.js"></script>
-    <script src="js/jquery.hDialog.js"></script>
-    <script src="js/bwizard.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="js/loadFile.js"></script>
-    <script type="text/javascript" src="js/jquery.form.js"></script>
+    <script src="/approveProject/js/custom.js"></script>
+    <script src="/approveProject/js/jquery.hDialog.js"></script>
+    <script src="/approveProject/js/bwizard.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/approveProject/js/loadFile.js"></script>
+    <script type="text/javascript" src="/approveProject/js/jquery.form.js"></script>
    
     <script type="text/javascript">
     var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
@@ -180,7 +180,7 @@ white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
     	
     });
     function addExpandInfo(){
-		$.post("addExpandUserInfo.action",form.serialize(),function(data){
+		$.post("/approveProject/addExpandUserInfo.action",form.serialize(),function(data){
     	
 		if(data!="failed"){
 			$('#myF').modal();
@@ -194,7 +194,7 @@ white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
 //		 文件上传,成功时将模态框关闭。
 		 $("#fileform").ajaxSubmit({
 				type: "POST",
-				url:"uploadUserAttachment.action",
+				url:"/approveProject/uploadUserAttachment.action",
 				dataType: "json",
 			    success: function(data){
 			    	$('#myF').modal('hide');

@@ -3,7 +3,6 @@ package com.approveproject.springmvc.service;
 import java.util.List;
 
 import com.approveproject.springmvc.pojo.ApproveAttachment;
-import com.sun.xml.internal.ws.api.message.Attachment;
 /**
  * 附件上传的服务接口定义
  * 项目审核的附件上传共用接口
@@ -55,7 +54,7 @@ public interface IApproveAttachmentService {
 
 	ApproveAttachment selecLastestAttByID(Integer application_id);
 
-	public List<Attachment> queryAllByAppID(Integer app_id);
+	public List<ApproveAttachment> queryAllByAppID(Integer app_id);
 
 	public ApproveAttachment selecOneByID(Integer id);
 	

@@ -7,19 +7,19 @@
 <meta name="author" content="gbtags.com">
 <title>科技部科技项目审批系统</title>
 <!-- Bootstrap Core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="/approveProject/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <!-- Fonts -->
-<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
+<link href="/approveProject/font-awesome/css/font-awesome.min.css" rel="stylesheet"
 	type="text/css"/>
-<link href="css/animate.css" rel="stylesheet" />
+<link href="/approveProject/css/animate.css" rel="stylesheet" />
 <!-- Squad theme CSS -->
-<link href="css/style.css" rel="stylesheet"/>
-<link href="color/default.css" rel="stylesheet"/>
-<link rel="stylesheet" href="css/common.css" />
+<link href="/approveProject/css/style.css" rel="stylesheet"/>
+<link href="/approveProject/color/default.css" rel="stylesheet"/>
+<link rel="stylesheet" href="/approveProject/css/common.css" />
 <!-- 基本样式 -->
-<link href="css/bootstrap-responsive.min.css" rel="stylesheet" />
-<link href="css/bwizard.min.css" rel="stylesheet" />
-<link href="css/shengbao.css" rel="stylesheet" type="text/css"/>
+<link href="/approveProject/css/bootstrap-responsive.min.css" rel="stylesheet" />
+<link href="/approveProject/css/bwizard.min.css" rel="stylesheet" />
+<link href="/approveProject/css/shengbao.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
@@ -98,7 +98,7 @@
 								</div>
 								<div class="modal-body">
 									<form id="fileform" role="form" enctype="multipart/form-data"
-										method="post" action="uploadApproveAttachment.action">
+										method="post" action="/approveProject/uploadApproveAttachment.action">
 
 										<div class="form-group">
 											<label for="inputfile1">文件选择</label> <input type="file"
@@ -130,17 +130,17 @@
 	<footer></footer>
 	<!-- Core JavaScript Files -->
 	
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.easing.min.js"></script>
-	<script src="js/jquery.scrollTo.js"></script>
-	<script src="js/wow.min.js"></script>
+	<script src="/approveProject/js/jquery.min.js"></script>
+	<script src="/approveProject/js/bootstrap.min.js"></script>
+	<script src="/approveProject/js/jquery.easing.min.js"></script>
+	<script src="/approveProject/js/jquery.scrollTo.js"></script>
+	<script src="/approveProject/js/wow.min.js"></script>
 	<!-- Custom Theme JavaScript -->
-	<script src="js/custom.js"></script>
-	<script src="js/jquery.hDialog.js"></script>
-	<script type="text/javascript" src="js/loadFile.js"></script>
-	<script type="text/javascript" src="js/jquery.form.js"> </script>
-	<script type="text/javascript" src="js/extendPagination.js"> </script>
+	<script src="/approveProject/js/custom.js"></script>
+	<script src="/approveProject/js/jquery.hDialog.js"></script>
+	<script type="text/javascript" src="/approveProject/js/loadFile.js"></script>
+	<script type="text/javascript" src="/approveProject/js/jquery.form.js"> </script>
+	<script type="text/javascript" src="/approveProject/js/extendPagination.js"> </script>
 	<script type="text/javascript">
     var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
     document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fac45a0f68a119fbe4d1c4c3ac3044dbd' type='text/javascript'%3E%3C/script%3E"));
@@ -156,7 +156,7 @@
 		//立项提交按钮点击事件，如果勾选了，则提交同时弹出模态框上传文件
 		$('#sumit1').bind('click',function(){
 			if(isReaded()){
-				$.post('newApplication.action',$(this).parent().parent().parent().serialize(),function(data){
+				$.post('/approveProject/newApplication.action',$(this).parent().parent().parent().serialize(),function(data){
 					if(data!='failed'){
 						alert(data);
 						$('#application_id').val(data);
@@ -188,7 +188,7 @@
 	}
 	 //查询项目类别
     function getCategorys(){
-		 $.post("getCategorys.action",function(data){
+		 $.post("/approveProject/getCategorys.action",function(data){
      		for(var i=0;i<data.length;i++){
      			if(data[i].name!='根'){
      				$('#category_id1').append("<option title='"+data[i].description+"' value='"+data[i].id+"'>"+data[i].name+"</option>");
@@ -202,7 +202,7 @@
 // 		 文件上传,成功时将模态框关闭。
 		 $("#fileform").ajaxSubmit({
 				type: "POST",
-				url:"uploadApproveAttachment.action",
+				url:"/approveProject/uploadApproveAttachment.action",
 				dataType: "json",
 			    success: function(data){
 			    	$('#myF1').modal('hide');

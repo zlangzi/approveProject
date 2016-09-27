@@ -21,7 +21,6 @@ import com.approveproject.springmvc.pojo.UserAttachment;
 import com.approveproject.springmvc.service.IUserService;
 import com.approveproject.springmvc.service.impl.UserServiceImpl;
 import com.approveproject.springmvc.utils.ReflectBean;
-import com.sun.jmx.snmp.Timestamp;
 
 
 

@@ -78,6 +78,12 @@ public class InformationServiceImpl implements IInformationService {
 		// TODO Auto-generated method stub
 		return informationMapper.deleteByPrimaryKey(id);
 	}
+
+	@Override
+	public List<Information> getAllInfosByStatus(String status) {
+		// TODO Auto-generated method stub
+		return informationMapper.getAllInfosByStatus(status);
+	}
 	
 
 }

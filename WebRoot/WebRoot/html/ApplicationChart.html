@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" type="text/css" href="http://localhost:8080/approveProject/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="http://localhost:8080/approveProject/css/charts_style.css">
+    <link rel="stylesheet" type="text/css" href="/approveProject/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/approveProject/css/charts_style.css">
 
     <body>
         <div class="text-center content">
@@ -61,16 +61,16 @@
 <!--                 </div> -->
 <!--             </div> -->
         </div>
-         <script type="text/javascript" src="http://localhost:8080/approveProject/js/jquery.min.js"></script>
-        <script type="text/javascript" src="http://localhost:8080/approveProject/js/echarts.js"></script>
-        <script type="text/javascript" src="http://localhost:8080/approveProject/js/bootstrap.min.js"></script>
+         <script type="text/javascript" src="/approveProject/js/jquery.min.js"></script>
+        <script type="text/javascript" src="/approveProject/js/echarts.js"></script>
+        <script type="text/javascript" src="/approveProject/js/bootstrap.min.js"></script>
        
         <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
         var myChart1 = echarts.init(document.getElementById('p1'));
 		$(function(){
 			 // 异步加载数据
-	        $.get('http://localhost:8080/approveProject/StageAndNum.action',function(data){
+	        $.get('/approveProject/StageAndNum.action',function(data){
 	        	 myChart1.setOption({
 	                 xAxis: {
 	                	 type : 'category',
@@ -114,7 +114,7 @@
 			$(function(){
 				// 异步加载数据
 		        
-		        $.get('http://localhost:8080/approveProject/StatusAndNum.action',function(data){
+		        $.get('/approveProject/StatusAndNum.action',function(data){
 		        	
 		                // 填入数据
 		                myChart2.setOption({
@@ -178,7 +178,7 @@
 //         });
 
 //         // 异步加载数据
-//         $.get('http://localhost:8080/approveProject/StatusAndNum.action').done(function(data) {
+//         $.get('//approveProject/StatusAndNum.action').done(function(data) {
 //             // 填入数据
 //             myChart3.setOption({
 //                 xAxis: {

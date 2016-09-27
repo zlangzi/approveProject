@@ -7,18 +7,18 @@
     <meta name="author" content="gbtags.com">
     <title>科技部科技项目审批系统</title>
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/approveProject/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <!-- Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="css/animate.css" rel="stylesheet" />
+    <link href="/approveProject/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/approveProject/css/animate.css" rel="stylesheet" />
     <!-- Squad theme CSS -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="color/default.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/common.css" />
+    <link href="/approveProject/css/style.css" rel="stylesheet">
+    <link href="/approveProject/color/default.css" rel="stylesheet">
+    <link rel="stylesheet" href="/approveProject/css/common.css" />
     <!-- 基本样式 -->
-    <link href="css/bootstrap-responsive.min.css" rel="stylesheet" />
-    <link href="css/bwizard.min.css" rel="stylesheet" />
-    <link href="css/shengbao.css" rel="stylesheet" type="text/css">
+    <link href="/approveProject/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="/approveProject/css/bwizard.min.css" rel="stylesheet" />
+    <link href="/approveProject/css/shengbao.css" rel="stylesheet" type="text/css">
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
@@ -118,17 +118,17 @@
     <div id="reglog"></div>
     <footer></footer>
     <!-- Core JavaScript Files -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/jquery.scrollTo.js"></script>
-    <script src="js/wow.min.js"></script>
+    <script src="/approveProject/js/jquery.min.js"></script>
+    <script src="/approveProject/js/bootstrap.min.js"></script>
+    <script src="/approveProject/js/jquery.easing.min.js"></script>
+    <script src="/approveProject/js/jquery.scrollTo.js"></script>
+    <script src="/approveProject/js/wow.min.js"></script>
     <!-- Custom Theme JavaScript -->
-    <script src="js/custom.js"></script>
-    <script src="js/jquery.hDialog.js"></script>
-    <script type="text/javascript" src="js/loadFile.js"></script>
-    <script type="text/javascript" src="js/jquery.form.js"> </script>
-    <script type="text/javascript" src="js/extendPagination.js"> </script>
+    <script src="/approveProject/js/custom.js"></script>
+    <script src="/approveProject/js/jquery.hDialog.js"></script>
+    <script type="text/javascript" src="/approveProject/js/loadFile.js"></script>
+    <script type="text/javascript" src="/approveProject/js/jquery.form.js"> </script>
+    <script type="text/javascript" src="/approveProject/js/extendPagination.js"> </script>
     <script type="text/javascript">
     var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
     document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fac45a0f68a119fbe4d1c4c3ac3044dbd' type='text/javascript'%3E%3C/script%3E"));
@@ -162,7 +162,7 @@
 	function getdata(obj){
 		//实施申请是查询完成了立项审核的才行,所以标志obj-1
 		if(obj==0){
-			$.post("getAPPListByStatus.action",{status:-2},function(data){
+			$.post("/approveProject/getAPPListByStatus.action",{status:-2},function(data){
 				if(data!=""){
 					callBackPagination(obj,data,5,10);
 				}
@@ -173,7 +173,7 @@
 			})
 		}else
 			{
-			$.post("getAPPListByStage.action",{stage:(obj-1)},function(data){
+			$.post("/approveProject/getAPPListByStage.action",{stage:(obj-1)},function(data){
 				if(data!=""){
 					callBackPagination(obj,data,5,10);
 				}
@@ -246,8 +246,7 @@
 	}
 	 //查询项目类别
     function getCategorys(){
-		 alert('dd');
-		 $.post("getCategorys.action",function(data){
+		 $.post("/approveProject/getCategorys.action",function(data){
      		for(var i=0;i<data.length;i++){
      			if(data[i].name!='根'){
      				$('#category_id1').append("<option title='"+data[i].description+"' value='"+data[i].id+"'>"+data[i].name+"</option>");
@@ -261,7 +260,7 @@
 // 		 文件上传,成功时将模态框关闭。
 		 $("#fileform").ajaxSubmit({
 				type: "POST",
-				url:"uploadApproveAttachment.action",
+				url:"/approveProject/uploadApproveAttachment.action",
 				dataType: "json",
 			    success: function(data){
 			    	$('#myF1').modal('hide');
@@ -285,7 +284,7 @@
 		 $('#table'+stage+' tbody >tr').each(function(){
 			 $(this).find("td>div>button").each(function(i){
 				$(this).bind('click',function(){
-					$.post('plsApprove.action',{id:$(this).parent().parent().parent().find("input").val()},function(data){
+					$.post('/approveProject/plsApprove.action',{id:$(this).parent().parent().parent().find("input").val()},function(data){
 						if(data!="failed"){
 							$('#application_id').val($(this).parent().parent().parent().find("input").val());
 							$('#myF1').modal();

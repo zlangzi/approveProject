@@ -8,18 +8,18 @@
 <meta name="author" content="gbtags.com">
 <title>科技部科技项目审批系统</title>
 <!-- Bootstrap Core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/approveProject/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <!-- Fonts -->
-<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
+<link href="/approveProject/font-awesome/css/font-awesome.min.css" rel="stylesheet"
 	type="text/css">
-<link href="css/animate.css" rel="stylesheet" />
+<link href="/approveProject/css/animate.css" rel="stylesheet" />
 <!-- Squad theme CSS -->
-<link href="css/style.css" rel="stylesheet">
-<link href="color/default.css" rel="stylesheet">
-<link rel="stylesheet" href="css/common.css" />
+<link href="/approveProject/css/style.css" rel="stylesheet">
+<link href="/approveProject/color/default.css" rel="stylesheet">
+<link rel="stylesheet" href="/approveProject/css/common.css" />
 <!-- 基本样式 -->
-<link href="css/bootstrap-responsive.min.css" rel="stylesheet" />
-<link href="css/bwizard.min.css" rel="stylesheet" />
+<link href="/approveProject/css/bootstrap-responsive.min.css" rel="stylesheet" />
+<link href="/approveProject/css/bwizard.min.css" rel="stylesheet" />
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
@@ -179,16 +179,16 @@
 	<footer></footer>
 
 	<!-- Core JavaScript Files -->
-	<script src="http://localhost:8080/approveProject/js/jquery.min.js"></script>
-	<script src="http://localhost:8080/approveProject/js/bootstrap.min.js"></script>
-	<script src="http://localhost:8080/approveProject/js/jquery.easing.min.js"></script>
-	<script src="http://localhost:8080/approveProject/js/jquery.scrollTo.js"></script>
-	<script src="http://localhost:8080/approveProject/js/wow.min.js"></script>
+	<script src="/approveProject/js/jquery.min.js"></script>
+	<script src="/approveProject/js/bootstrap.min.js"></script>
+	<script src="/approveProject/js/jquery.easing.min.js"></script>
+	<script src="/approveProject/js/jquery.scrollTo.js"></script>
+	<script src="/approveProject/js/wow.min.js"></script>
 	<!-- Custom Theme JavaScript -->
-	<script src="http://localhost:8080/approveProject/js/custom.js"></script>
-	<script src="http://localhost:8080/approveProject/js/jquery.hDialog.js"></script>
-	<script src="http://localhost:8080/approveProject/js/bwizard.min.js" type="text/javascript"></script>
-	<script type="text/javascript" src="http://localhost:8080/approveProject/js/loadFile.js"></script>
+	<script src="/approveProject/js/custom.js"></script>
+	<script src="/approveProject/js/jquery.hDialog.js"></script>
+	<script src="/approveProject/js/bwizard.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="/approveProject/js/loadFile.js"></script>
 	<script type="text/javascript">
 	
      $("#wizard").bwizard();
@@ -200,14 +200,14 @@
 	<!--     资讯加载JS -->
 	<script type="text/javascript">
     $(function(){
-    	$.get("getAllInfos.action",function(data,status){
+    	$.get("/approveProject/getAllInfos.action",{status:"1"},function(data,status){
     		for(var i=1;i<=4;i++){
 				$('#'+i).remove('li');
 			}
     		console.log(data);
     		if(data!=""){
     			for(var i=0;i<data.length;i++){
-    				$('#'+data[i].type_id).append("<li><a href='http://localhost:8080/approveProject/html/InfoDetails.html?id="+data[i].id+"'>"+data[i].title+"</a></li>")
+    				$('#'+data[i].type_id).append("<li><a href='/approveProject/html/InfoDetails.html?id="+data[i].id+"'>"+data[i].title+"</a></li>")
     			}
     		}
     		

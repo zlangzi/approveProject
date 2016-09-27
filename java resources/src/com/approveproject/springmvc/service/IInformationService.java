@@ -82,4 +82,6 @@ public interface IInformationService {
 
 	public int delInfoByID(Integer id);
 
+	public List<Information> getAllInfosByStatus(String status);
+
 }

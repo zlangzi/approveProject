@@ -32,7 +32,6 @@ import com.approveproject.springmvc.service.impl.ApplicationServiceImpl;
 import com.approveproject.springmvc.utils.DateTimeUtils;
 import com.approveproject.springmvc.utils.FileOperateUtil;
 import com.approveproject.springmvc.utils.ReflectBean;
-import com.sun.xml.internal.ws.api.message.Attachment;
 
 /**
  * 附件上传的controller
@@ -170,8 +169,8 @@ public class AttachmentController {
 		ApproveAttachment approveAttachment=approveAttachmentService.selecLastestAttByID(id);
 		 String path=approveAttachment.getPath();  
 		 Application application=applicationService.getOneApp(id);
-		
-	        String string=application.getTopic()+"_附件_"+new DateTimeUtils(approveAttachment.getUploadtime()).getDate()+".jpg";
+		 String type=path.split(".")[1];
+	        String string=application.getTopic()+"_附件_"+new DateTimeUtils(approveAttachment.getUploadtime()).getDate()+"."+type;
 	        String fileName=new String(string.getBytes("UTF-8"),"iso-8859-1");//为了解决中文名称乱码问题  
 	        
 	        FileOperateUtil.downloadFileWrite(fileName,path,response);
@@ -179,13 +178,15 @@ public class AttachmentController {
 		
 		
 	}
+	
 	@RequestMapping("attachmentDownloadById")
 	public void fileDownloadById(@RequestParam Integer id,HttpServletRequest request,HttpServletResponse response)throws Exception {
 		ApproveAttachment approveAttachment=approveAttachmentService.selecOneByID(id);
-		 String path=approveAttachment.getPath();  
+		 String path=approveAttachment.getPath();
+		 String type=path.split(".")[1];
 		 Application application=applicationService.getOneApp(approveAttachment.getApplication_id());
 		
-	        String string=application.getTopic()+"_附件_"+new DateTimeUtils(approveAttachment.getUploadtime()).getDate()+".jpg";
+	        String string=application.getTopic()+"_附件_"+new DateTimeUtils(approveAttachment.getUploadtime()).getDate()+"."+type;
 	        String fileName=new String(string.getBytes("UTF-8"),"iso-8859-1");//为了解决中文名称乱码问题  
 	        
 	        FileOperateUtil.downloadFileWrite(fileName,path,response);
@@ -195,11 +196,26 @@ public class AttachmentController {
 	}
 	@ResponseBody
 	@RequestMapping("getAllAttachment")
-	public List<Attachment> getAllAttachment(@RequestParam Integer app_id,HttpServletRequest request){
+	public List<ApproveAttachment> getAllAttachment(@RequestParam Integer app_id,HttpServletRequest request){
 		return approveAttachmentService.queryAllByAppID(app_id);
 	}
 	
 	
+	@RequestMapping("attachmentDownload_user")
+	public void attachmentDownload_user(@RequestParam Integer id,HttpServletRequest request,HttpServletResponse response)throws Exception {
+		 UserAttachment userAttachment=userAttachmentService.getAttachmentByID(id);
+		
+		String path=userAttachment.getPath();  
+		 Application application=applicationService.getOneApp(id);
+		 String type=path.split(".")[1];
+	        String string=application.getTopic()+"_附件_"+new DateTimeUtils(userAttachment.getUploadtime()).getDate()+"."+type;
+	        String fileName=new String(string.getBytes("UTF-8"),"iso-8859-1");//为了解决中文名称乱码问题  
+	        
+	        FileOperateUtil.downloadFileWrite(fileName,path,response);
+	        return ; 
+		
+		
+	}
 	
 	
 	
