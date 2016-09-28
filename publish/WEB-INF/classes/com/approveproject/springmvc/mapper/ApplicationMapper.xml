@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.approveproject.springmvc.mapper.ApplicationMapper" >
+  <resultMap id="BaseResultMap" type="com.approveproject.springmvc.pojo.Application" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="topic" property="topic" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="BIGINT" />
+    <result column="leader_id" property="leader_id" jdbcType="INTEGER" />
+    <result column="approver" property="approver" jdbcType="CHAR" />
+    <result column="stage" property="stage" jdbcType="INTEGER" />
+    <result column="category_id" property="category_id" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+  
+<!--   一个人申请多个明细映射 -->
+  <resultMap type="com.approveproject.springmvc.pojo.Application" id="ApplicationAndDetailsResultMap" extends="BaseResultMap">
+  	<collection property="details" ofType="com.approveproject.springmvc.pojo.Detail" >	
+  		<id column="d_id" property="id" jdbcType="INTEGER" />
+    	<result column="application_id" property="application_id" jdbcType="INTEGER" />
+    	<result column="approvetime" property="approvetime" jdbcType="BIGINT" />
+    	<result column="status" property="status" jdbcType="CHAR" />
+   	 	<result column="comments" property="comments" jdbcType="VARCHAR" />
+    	<result column="approver_id" property="approver_id" jdbcType="INTEGER" />
+  	</collection>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, topic, content, createtime, leader_id, approver, stage, category_id, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from application_table
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from application_table
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.approveproject.springmvc.pojo.Application" >
+    insert into application_table (id, topic, content, 
+      createtime, leader_id, approver, 
+      stage, category_id, status
+      )
+    values (#{id,jdbcType=INTEGER}, #{topic,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=BIGINT}, #{leader_id,jdbcType=INTEGER}, #{approver,jdbcType=CHAR}, 
+      #{stage,jdbcType=INTEGER}, #{category_id,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.approveproject.springmvc.pojo.Application" >
+  <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+  SELECT LAST_INSERT_ID()
+  </selectKey>
+    insert into application_table
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="topic != null" >
+        topic,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="leader_id != null" >
+        leader_id,
+      </if>
+      <if test="approver != null" >
+        approver,
+      </if>
+      <if test="stage != null" >
+        stage,
+      </if>
+      <if test="category_id != null" >
+        category_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="topic != null" >
+        #{topic,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=BIGINT},
+      </if>
+      <if test="leader_id != null" >
+        #{leader_id,jdbcType=INTEGER},
+      </if>
+      <if test="approver != null" >
+        #{approver,jdbcType=CHAR},
+      </if>
+      <if test="stage != null" >
+        #{stage,jdbcType=INTEGER},
+      </if>
+      <if test="category_id != null" >
+        #{category_id,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.approveproject.springmvc.pojo.Application" >
+    update application_table
+    <set >
+      <if test="topic != null" >
+        topic = #{topic,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=BIGINT},
+      </if>
+      <if test="leader_id != null" >
+        leader_id = #{leader_id,jdbcType=INTEGER},
+      </if>
+      <if test="approver != null" >
+        approver = #{approver,jdbcType=CHAR},
+      </if>
+      <if test="stage != null" >
+        stage = #{stage,jdbcType=INTEGER},
+      </if>
+      <if test="category_id != null" >
+        category_id = #{category_id,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.approveproject.springmvc.pojo.Application" >
+    update application_table
+    set topic = #{topic,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=BIGINT},
+      leader_id = #{leader_id,jdbcType=INTEGER},
+      approver = #{approver,jdbcType=CHAR},
+      stage = #{stage,jdbcType=INTEGER},
+      category_id = #{category_id,jdbcType=INTEGER},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+<!--   查询某人负责的所有项目 -->
+  <select id="queryAllApplicationByUserID" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  	select  <include refid="Base_Column_List" />
+  	from application_table
+    where leader_id = #{id,jdbcType=INTEGER}
+  </select>
+  
+<!--   查询某人信息和负责的所有项目信息， 不重复-->
+  <select id="findApplicationAndDetails" resultMap="ApplicationAndDetailsResultMap">
+	SELECT a.*,d.id d_id,d.application_id,d.approver_id,d.approvetime,d.comments,d.`status`
+	FROM application_table a,detail_table d
+	WHERE a.id=d.application_id AND a.id=1
+  </select>
+  <!-- 根据负责人的ID查询所有某种状态的某种申报审核的Application -->
+  <select id="getAllEstablishedByApprovalVo" parameterType="com.approveproject.springmvc.pojo.ApprovalVo" resultType="com.approveproject.springmvc.pojo.Application">
+  	select * from application_table 
+  	where leader_id=#{leader_id} and stage=#{stage} and status=#{status}
+  </select>
+  <resultMap type="com.approveproject.springmvc.pojo.AppLeaderNameAndCategory" id="App_leader_type">
+  	<id column="id" property="id" jdbcType="INTEGER" />
+    <result column="topic" property="topic" jdbcType="VARCHAR" />
+    <result column="name" property="leaderName" jdbcType="VARCHAR" />
+    <result column="category" property="category" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR"/>
+    <result column="createtime" property="createtime" jdbcType="BIGINT" />
+  	<result column="description" property="description" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="getAllEstablishedByStage" parameterType="java.util.Map" resultMap="App_leader_type">
+  	SELECT a.id id,a.status,a.topic topic,u.`name`,c.`name` category,c.description,a.createtime from application_table a,user_table u,category_table c
+	WHERE a.leader_id=u.id AND a.category_id=c.id  and a.stage=#{stage,jdbcType=INTEGER} and a.status=#{status,jdbcType=INTEGER} and a.leader_id=#{user_id,jdbcType=INTEGER}
+  </select>
+   <select id="getAllEstablishedByStatus" parameterType="java.util.Map" resultMap="App_leader_type">
+  	SELECT a.id id,a.status,a.topic topic,u.`name`,c.`name` category,c.description,a.createtime from application_table a,user_table u,category_table c
+	WHERE a.leader_id=u.id AND a.category_id=c.id  and a.status=#{status,jdbcType=INTEGER} and a.leader_id=#{user_id,jdbcType=INTEGER}
+  </select>
+  <select id="getAllCanApprove" parameterType="java.util.Map" resultMap="App_leader_type">
+  	SELECT a.id id,a.status,a.topic topic,u.`name`,c.`name` category,c.description,a.createtime from application_table a,user_table u,category_table c
+	WHERE a.leader_id=u.id AND a.category_id=c.id  and a.status=#{status,jdbcType=INTEGER} and a.stage=#{stage,jdbcType=INTEGER}
+  </select>
+   <select id="getAllApproved" parameterType="java.util.Map" resultMap="App_leader_type">
+  	SELECT a.id id,a.status,a.topic topic,u.`name`,c.`name` category,c.description,a.createtime from application_table a,user_table u,category_table c
+	WHERE a.leader_id=u.id AND a.category_id=c.id  and a.status=#{status,jdbcType=INTEGER} and a.approver=#{approver_id,jdbcType=CHAR}
+  </select>
+  <resultMap type="com.approveproject.springmvc.pojo.ChartItem" id="StageNum">
+  	<result column="total" property="yRow" jdbcType="INTEGER" />
+  	<result column="flag" property="xRow" jdbcType="INTEGER" />
+  </resultMap>
+  <select id="getStageAndNum" resultMap="StageNum">
+  
+  	SELECT COUNT(stage) total, stage flag FROM application_table GROUP BY stage
+  </select>
+  <select id="getStatusAndNum" resultMap="StageNum">
+  	SELECT COUNT(status) total, status flag FROM application_table GROUP BY status
+  </select>
+<!--   
+根据审核明细记录更改application中的字段信息 
+		审核过程！
+-->
+  <update id="updateStatusByDetail" parameterType="com.approveproject.springmvc.pojo.Detail">
+  	
+  	update application_table
+   	set 
+    	approver = #{approver_id,jdbcType=INTEGER},
+    	status = #{status,jdbcType=CHAR}
+    where id = #{application_id,jdbcType=INTEGER}
+  
+  </update>
+  
+</mapper>

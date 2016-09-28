@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.approveproject.springmvc.mapper.InformationMapper" >
+  <resultMap id="BaseResultMap" type="com.approveproject.springmvc.pojo.Information" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="publishtime" property="publishtime" jdbcType="BIGINT" />
+    <result column="type_id" property="type_id" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="CHAR" />
+    <result column="publisher_id" property="publisher_id" jdbcType="INTEGER" />
+    <result column="orderby" property="orderby" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.approveproject.springmvc.pojo.Information" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, title, publishtime, type_id, status, publisher_id, orderby
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from information_table
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from information_table
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.approveproject.springmvc.pojo.Information" >
+    insert into information_table (id, title, publishtime, 
+      type_id, status, publisher_id, 
+      orderby, content)
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{publishtime,jdbcType=BIGINT}, 
+      #{type_id,jdbcType=INTEGER}, #{status,jdbcType=CHAR}, #{publisher_id,jdbcType=INTEGER}, 
+      #{orderby,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.approveproject.springmvc.pojo.Information" >
+   <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+  SELECT LAST_INSERT_ID()
+  </selectKey>
+    insert into information_table
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="publishtime != null" >
+        publishtime,
+      </if>
+      <if test="type_id != null" >
+        type_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="publisher_id != null" >
+        publisher_id,
+      </if>
+      <if test="orderby != null" >
+        orderby,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="publishtime != null" >
+        #{publishtime,jdbcType=BIGINT},
+      </if>
+      <if test="type_id != null" >
+        #{type_id,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="publisher_id != null" >
+        #{publisher_id,jdbcType=INTEGER},
+      </if>
+      <if test="orderby != null" >
+        #{orderby,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.approveproject.springmvc.pojo.Information" >
+    update information_table
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="publishtime != null" >
+        publishtime = #{publishtime,jdbcType=BIGINT},
+      </if>
+      <if test="type_id != null" >
+        type_id = #{type_id,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="publisher_id != null" >
+        publisher_id = #{publisher_id,jdbcType=INTEGER},
+      </if>
+      <if test="orderby != null" >
+        orderby = #{orderby,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.approveproject.springmvc.pojo.Information" >
+    update information_table
+    set title = #{title,jdbcType=VARCHAR},
+      publishtime = #{publishtime,jdbcType=BIGINT},
+      type_id = #{type_id,jdbcType=INTEGER},
+      status = #{status,jdbcType=CHAR},
+      publisher_id = #{publisher_id,jdbcType=INTEGER},
+      orderby = #{orderby,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getAllInfosByTypeID" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+	SELECT * FROM information_table
+	WHERE type_id=#{type_id}
+  </select>
+  <select id="getAllInfos"  resultMap="ResultMapWithBLOBs">
+  	SELECT * FROM information_table
+  
+  </select>
+  
+  <select id="getInfoCategoryByStatus" parameterType="java.util.Map" resultType="com.approveproject.springmvc.pojo.InfoPublisherCategory">
+  		SELECT i1.id, title,publishtime,`status`,i2.name typeName,u.`name` publisher from information_table i1,info_type_table i2,user_table u
+
+WHERE i1.publisher_id=u.id and i1.type_id=i2.id AND i1.`status`=#{status,jdbcType=INTEGER}
+  </select>
+  <select id="getAllInfosByStatus" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List"></include> from information_table where status=#{status,jdbcType=CHAR}
+  
+  </select>
+</mapper>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>后台管理系统</title>
+    <link href="/approveProject/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/approveProject/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="/approveProject/css/bg_style.css" rel="stylesheet">
+    
+</head>
+
+<body data-spy="scroll" data-target="#myScrollspy">
+    <header>
+        <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+	</nav>
+    </header>
+    <!-- /header -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 " style="text-align:center;margin-left:-40px" id="myScrollspy">
+
+                <div class="panel-group navbar-fixed-left" id="accordion">
+                    <div class="panel panel-primary ">
+                        <div class="panel-heading ">
+                            <h4 class="panel-title ">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                    项目管理
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <ul class="nav nav-pills nav-stacked ">
+                                    <li class="active"><a data-toggle="tab" href="#m11">统计</a></li>
+                                    <li id='qq'><a data-toggle="tab" href="#m12">查询</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-primary ">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                    科技资讯
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse ">
+                            <div class="panel-body">
+                                <ul class="nav nav-pills nav-stacked ">
+                                    <li><a data-toggle="tab" href="#m21">新建</a></li>
+                                    <li><a data-toggle="tab" href="#m22">已发布</a></li>
+                                    <li><a data-toggle="tab" href="#m23">草稿箱</a></li>
+                                    <li><a data-toggle="tab" href="#m25">统计</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-primary ">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                    用户管理
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse ">
+                            <div class="panel-body">
+                                <ul class="nav nav-pills nav-stacked ">
+                                    <li><a data-toggle="tab" href="#m31">身份管理</a></li>
+                                    <!--                                     <li><a data-toggle="tab" href="#m32">审核专家</a></li> -->
+                                    <!--                                     <li><a data-toggle="tab" href="#m33">项目负责人</a></li> -->
+                                    <li><a data-toggle="tab" href="#m34">用户统计</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-primary ">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                    字典表维护
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseFour" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li><a data-toggle="tab" href="#m41">科技资讯维护</a></li>
+                                    <li><a data-toggle="tab" href="#m42">科技项目分类维护</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9  ">
+                <div class="tab-content">
+                    <div id="m11" class="tab-pane fade in active">
+                        <nav class="navbar navbar-default " role="navigation">
+                            <ol class="breadcrumb" style="margin-bottom: 0px;padding-top: 15px;">
+                                <li><a href="#">项目管理</a></li>
+                                <li><a href="#" class="active">项目统计</a></li>
+                            </ol>
+                        </nav>
+                        <div class="bg_content">
+                            <iframe align="middle" width="100%" height="450px" src="html/ApplicationChart.html" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="yes"></iframe>
+                        </div>
+                    </div>
+                    <div id="m12" class="tab-pane fade">
+                        <nav class="navbar navbar-default " role="navigation">
+                            <ol class="breadcrumb" style="margin-bottom: 0px;padding-top: 15px;">
+                                <li><a href="#">项目管理</a></li>
+                                <li><a href="#" class="active">项目查询</a></li>
+                            </ol>
+                        </nav>
+                        <div class="bg_content">
+                            <iframe align="top" width="100%" height="460" scrolling="yes" src="html/ApplicationQuery.html" frameborder="no" border="1" marginwidth="0" marginheight="0"></iframe>
+                        </div>
+                    </div>
+                    <div id="m21" class="tab-pane fade">
+                        <nav class="navbar navbar-default " role="navigation">
+                            <ol class="breadcrumb" style="margin-bottom: 0px;padding-top: 15px;">
+                                <li><a href="#">科技资讯</a></li>
+                                <li><a href="#" class="active">新建</a></li>
+                            </ol>
+                        </nav>
+                        <div class="bg_content">
+                            <iframe align="middle" width="100%" scrolling="yes" height="460px;" src="html/writeInfo.html" frameborder="no" border="0" marginwidth="0" marginheight="0" ></iframe>
+                        </div>
+                    </div>
+                    <div id="m22" class="tab-pane fade">
+                        <nav class="navbar navbar-default " role="navigation">
+                            <ol class="breadcrumb" style="margin-bottom: 0px;padding-top: 15px;">
+                                <li><a href="#">科技资讯</a></li>
+                                <li><a href="#" class="active">已发布</a></li>
+                            </ol>
+                        </nav>
+                        <div class="bg_content">
+                            <iframe algin="middle" width="100%" height="460px;" src="html/infolist_publish.html" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="yes"></iframe>
+                        </div>
+                    </div>
+                    <div id="m23" class="tab-pane fade">
+                        <nav class="navbar navbar-default " role="navigation">
+                            <ol class="breadcrumb" style="margin-bottom: 0px;padding-top: 15px;">
+                                <li><a href="#">科技资讯</a></li>
+                                <li><a href="#" class="active">草稿箱</a></li>
+                            </ol>
+                        </nav>
+                        <div class="bg_content">
+                            <iframe algin="middle" width="100%" height="460px;" src="html/infolist_caogao.html" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="yes"></iframe>
+                        </div>
+                    </div>
+                
+                    <div id="m25" class="tab-pane fade">
+                        <nav class="navbar navbar-default " role="navigation">
+                            <ol class="breadcrumb" style="margin-bottom: 0px;padding-top: 15px;padding-left: 25px;">
+                                <li><a href="#">科技资讯</a></li>
+                                <li><a href="#" class="active">科技资讯统计</a></li>
+                            </ol>
+                        </nav>
+                        <div class="bg_content">
+                            <iframe algin="middle" src="html/infoChart.html" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="yes" height="460px;" width="100%"></iframe>
+                        </div>
+                    </div>
+                    <div id="m31" class="tab-pane fade">
+                        <nav class="navbar navbar-default " role="navigation">
+                            <ol class="breadcrumb" style="margin-bottom: 0px;padding-top: 15px;">
+                                <li><a href="#">用户管理</a></li>
+                                <li><a href="#" class="active">身份管理</a></li>
+                            </ol>
+                        </nav>
+                        <div class="bg_content">
+                            <iframe align="middle" src="html/userApproval.html" width="100%" height="460px;" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="yes"></iframe>
+                        </div>
+                    </div>
+                   
+                    <div id="m34" class="tab-pane fade">
+                        <nav class="navbar navbar-default " role="navigation">
+                            <ol class="breadcrumb" style="margin-bottom: 0px;padding-top: 15px;">
+                                <li><a href="#">用户管理</a></li>
+                                <li><a href="#" class="active">用户统计</a></li>
+                            </ol>
+                        </nav>
+                        <div class="bg_content">
+                            <iframe align="middle" src="html/userChart.html" width="100%" height="460px;" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="yes"></iframe>
+                        </div>
+                    </div>
+                    <div id="m41" class="tab-pane fade">
+                        <nav class="navbar navbar-default " role="navigation">
+                            <ol class="breadcrumb" style="margin-bottom: 0px;padding-top: 15px;">
+                                <li><a href="#">字典表维护</a></li>
+                                <li><a href="#" class="active">科技咨询类型维护</a></li>
+                            </ol>
+                        </nav>
+                        <div class="bg_content">
+                            <iframe align="middle" src="html/typemanager.html" width="100%" height="100%" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+                        </div>
+                    </div>
+                    <div id="m42" class="tab-pane fade">
+                        <nav class="navbar navbar-default " role="navigation">
+                            <ol class="breadcrumb" style="margin-bottom: 0px;padding-top: 15px;">
+                                <li><a href="#">字典表维护</a></li>
+                                <li><a href="#" class="active">科技项目类型维护</a></li>
+                            </ol>
+                        </nav>
+                        <div class="bg_content">
+                            <iframe align="middle" src="html/categorymanager.html" width="100%" height="100%" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <footer>
+        
+    </footer>
+    <script src="/approveProject/js/jquery.min.js"></script>
+    <script src="/approveProject/js/bootstrap.min.js"></script>
+    
+   
+    <!-- <script src="bootstrap-tab.js"></script> -->
+    <script type="text/javascript">
+    //点击导航，刷新内容页面，jquery强制刷新
+    $(function() {
+        var objs = $('.panel-body >ul >li >a');
+        objs.each(function(i) {
+            var href = $(this).attr("href");
+            $(this).bind("click",function(){
+            	 var ifm=$(href + ">.bg_content > iframe");
+                 ifm.attr('src', ifm.attr('src'));
+            })
+           
+        })
+    })
+    </script>
+</body>
+
+
+</html>

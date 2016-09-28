@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="gbtags.com">
+    <title>科技部科技项目审批系统</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="/approveProject/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!-- Fonts -->
+    <link href="/approveProject/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/approveProject/css/animate.css" rel="stylesheet" />
+    <!-- Squad theme CSS -->
+    <link href="/approveProject/css/style.css" rel="stylesheet">
+    <link href="/approveProject/color/default.css" rel="stylesheet">
+    <link rel="stylesheet" href="/approveProject/css/common.css" />
+    <!-- 基本样式 -->
+    <link href="/approveProject/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="/approveProject/css/bwizard.min.css" rel="stylesheet" />
+    <link href="/approveProject/css/shengbao.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    .scrollspy-example {
+        height: 200px;
+        overflow: auto;
+        position: relative;
+    }
+    </style>
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="load"></div>
+    </div>
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <!-- /.container -->
+    </nav>
+    <!-- Section: intro -->
+    <!-- /Section: services -->
+    <article>
+        <img src="/approveProject/img/bg1.jpg" style="width:100%;height:200px;" alt="">
+        <div class="content container ">
+            <div class=" panel panel-default">
+                <div id="app_bar" class=" panel-heading">
+                    <h3 class="panel-titile">项目信息</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                     <form class="form-horizontal" role="form" action="" onsubmit="rerurn false">
+                        <div class="form-group">
+                            <label for="topic1" class="col-sm-2 control-label">题目</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="topic1" name="topic" value="" readonly="true" required="true">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category_id1" class="col-sm-2 control-label">领域</label>
+                            <div class="col-sm-10">
+                                <select id="category_id1" disabled="disabled" value="" readonly="true" name="category_id" class="form-control">
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="content1" class="col-sm-2 control-label">简介</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" id="content1" name="content" rows="5" value="" readonly="true" required="true"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="content1" class="col-sm-2 control-label">附件：</label>
+                            <div class="col-sm-10 " scroll name="file">
+                                <div id="attachments" class="list-group" data-spy="scroll" data-target="#navbarExample" data-offset="10" class="scrollspy-example">
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+                <details>
+                    <summary>评审信息</summary>
+                    <ul class="nav nav-tabs nav-justified">
+                        <li class="active"><a href="#nav1" data-toggle="tab">阶段</a></li>
+                        
+                    </ul>
+                    <div class="tab-content">
+                    <article class="tab-pane fade in active" style=";height:300px;" id="nav1">
+                        <aside class="col-md-3 text-left" style="font-family:微软雅黑" >
+                            <h4 style="font-family:微软雅黑;padding:20px 0 20px 20px;">结果：</h4>
+                            <div class="text-center" style="padding-top:20px;">
+                            <img id="myimage1" onclick=""  src="" width="100" height="180">
+                            <!-- 亮灯路径pic_bulbon.gif -->
+                            </div>
+                        </aside>
+                        <section class="col-md-9 text-left" style="padding:20px 30px 20px 20px;">
+
+                            <div class=" panel panel-default ">
+                                <div class="panel-titile text-center">
+                                    反馈
+                                </div>
+                                <div style="padding:5px 20px 20px 20px;height:200px;">
+                                    <ul id="details">
+                                    
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                    </article>
+                    
+                    
+                    
+                    </div>
+                </details>
+
+            </div>
+        </div>
+    </article>
+    <div id="reglog"></div>
+    <footer></footer>
+    <!-- Core JavaScript Files -->
+    <script src="/approveProject/js/jquery.min.js"></script>
+    <script src="/approveProject/js/bootstrap.min.js"></script>
+    <script src="/approveProject/js/jquery.easing.min.js"></script>
+    <script src="/approveProject/js/jquery.scrollTo.js"></script>
+    <script src="/approveProject/js/wow.min.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="/approveProject/js/custom.js"></script>
+    <script src="/approveProject/js/jquery.hDialog.js"></script>
+    <script type="text/javascript" src="/approveProject/js/loadFile.js"></script>
+    <script type="text/javascript" src="/approveProject/js/jquery.form.js">
+    </script>
+    <script type="text/javascript" src="/approveProject/js/extendPagination.js">
+    </script>
+    <script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fac45a0f68a119fbe4d1c4c3ac3044dbd' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script>
+    
+    </script>
+</body>
+<script type="text/javascript">
+	$(function(){
+		url=window.location.href;
+		 var paraString =url.substring(url.indexOf("?")+1, url.length).split("="); 
+		 getAppDetails(parseInt(paraString[1]));
+		 
+		 getCategorys();	
+		 getAllAttachment(parseInt(paraString[1]));
+		 approveDetails(parseInt(paraString[1]));
+	})
+	function getAppDetails(id){
+		$.get("/approveProject/getOneApp.action",{id:id},function(data){
+			$('#topic1').val(data.topic);
+			$('#category_id1').val(data.category_id);
+			$('#content1').text(data.content);
+			
+		})
+	}
+	//查询项目类别
+    function getCategorys(){
+		 $.post("/approveProject/getCategorys.action",function(data){
+     		for(var i=0;i<data.length;i++){
+     			if(data[i].name!='根'){
+     				$('#category_id1').append("<option title='"+data[i].description+"' value='"+data[i].id+"'>"+data[i].name+"</option>");
+     			}
+
+     		}
+		 });
+    }
+	function getAllAttachment(id){
+		$.get("/approveProject/getAllAttachment.action",{app_id:id},function(data){
+			for(var i=0;i<data.length;i++){
+				$('#attachments').append('<a href="/approveProject/attachmentDownloadById.action?id='+data[i].id+'" style="text-decoration:underline;">附件'+(i+1)+'</a><br>')
+			}
+		})
+	}
+	var bulOn=false;
+	function approveDetails(app_id){
+		$.get("/approveProject/getApproveDetails.action",{app_id:app_id},function(data){
+			
+			for(var i=0;i<data.length;i++){
+				$('#details').append("<li>"+getDateTime(new Date(data[i].approvetime))+"----"+getStatus(data[i].status)+"----"+data[i].comments+"</li>");
+				bulOn=data[i].status==2?true:false;
+			}
+			if(bulOn){
+				$('#myimage1').attr("src","/approveProject/img/pic_bulbon.gif");
+			}
+			else
+				$('#myimage1').attr("src","/approveProject/img/pic_bulboff.gif")
+		})
+	}
+	 function getDateTime(date){
+
+	    	return ""+date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
+	    }
+	 function getStatus(flag){
+		 if(flag==-2){
+			 return "草稿";
+		 }
+		 if(flag==-1){
+			 return "未通过";
+		 }
+		 if(flag==0){
+			 return "待审核";
+		 }
+		 if(flag==1){
+			 return "审核中";
+		 }
+		 if(flag==2){
+			 return "通过";
+		 }
+	 }
+</script>
+</html>

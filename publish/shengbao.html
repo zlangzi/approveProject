@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="gbtags.com">
+    <title>科技部科技项目审批系统</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="/approveProject/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!-- Fonts -->
+    <link href="/approveProject/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/approveProject/css/animate.css" rel="stylesheet" />
+    <!-- Squad theme CSS -->
+    <link href="/approveProject/css/style.css" rel="stylesheet">
+    <link href="/approveProject/color/default.css" rel="stylesheet">
+    <link rel="stylesheet" href="/approveProject/css/common.css" />
+    <!-- 基本样式 -->
+    <link href="/approveProject/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="/approveProject/css/bwizard.min.css" rel="stylesheet" />
+    <link href="/approveProject/css/shengbao.css" rel="stylesheet" type="text/css">
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="load"></div>
+    </div>
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <!-- /.container -->
+    </nav>
+    <!-- Section: intro -->
+    <!-- /Section: services -->
+    <article>
+        <img src="img/bg1.jpg" style="width:100%;height:200px;" alt="">
+        <div class="content container ">
+            <div class=" panel panel-default">
+                <div id="app_bar" class=" panel-heading">
+                    <h3 class="panel-titile">项目负责人申报系统</h3>
+                    <ul class="nav nav-tabs nav-justified">
+                        <li class="active"><a href="#sb_1" data-toggle="tab">立项申报</a></li>
+                        <li><a href="#sb_2" data-toggle="tab">实施申报</a></li>
+                        <li><a href="#sb_3" data-toggle="tab">验收申报</a></li>
+                        <li><a href="#sb_4" data-toggle="tab">成果申报</a></li>
+                        <li><a href="#sb_5" data-toggle="tab">奖励申报</a></li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="sb_1">
+                            <button id="btn_new" class="btn btn-primary"  type="button">新建</button>
+                            <div id="mainContent1">
+
+
+                        </div>
+                        <div id="callBackPager1"></div>
+                        </div>
+                        <div class="tab-pane fade in " id="sb_2">
+						<div id="mainContent2">
+
+
+                        </div>
+                        <div id="callBackPager2"></div>
+					</div>
+					<div class="tab-pane fade in " id="sb_3">
+						<div id="mainContent3"></div>
+						<div id="callBackPager3"></div>
+					</div>
+					<div class="tab-pane fade in " id="sb_4">
+						<div id="mainContent4"></div>
+						<div id="callBackPager4"></div>
+					</div>
+					<div class="tab-pane fade in " id="sb_5">
+						<div id="mainContent5"></div>
+						<div id="callBackPager5"></div>
+					</div>
+
+
+								<div class="modal fade" id="myF1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+												&times;
+											</button>
+											<h4 class="modal-title" id="myModalLabel1">
+												附件上传
+											</h4>
+										</div>
+										<div class="modal-body">
+											<form id="fileform" role="form" enctype="multipart/form-data" method="post" action="uploadApproveAttachment.action">
+												
+											  <div class="form-group">
+											    <label for="inputfile1">文件选择</label>
+											    <input type="file" name="file">
+											    <input id="application_id" name="application_id" type="hidden">
+												<input name="type" type="hidden" value="application">
+											    <p class="help-block">上传申报附件</p>
+											  </div>
+
+											  <button id='upload_btn' type="button" class="btn btn-default">上传</button>
+											</form>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+											</button>
+
+										</div>
+									</div><!-- /.modal-content -->
+								</div><!-- /.modal -->
+							</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <div id="reglog"></div>
+    <footer></footer>
+    <!-- Core JavaScript Files -->
+    <script src="/approveProject/js/jquery.min.js"></script>
+    <script src="/approveProject/js/bootstrap.min.js"></script>
+    <script src="/approveProject/js/jquery.easing.min.js"></script>
+    <script src="/approveProject/js/jquery.scrollTo.js"></script>
+    <script src="/approveProject/js/wow.min.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="/approveProject/js/custom.js"></script>
+    <script src="/approveProject/js/jquery.hDialog.js"></script>
+    <script type="text/javascript" src="/approveProject/js/loadFile.js"></script>
+    <script type="text/javascript" src="/approveProject/js/jquery.form.js"> </script>
+    <script type="text/javascript" src="/approveProject/js/extendPagination.js"> </script>
+    <script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fac45a0f68a119fbe4d1c4c3ac3044dbd' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+
+    <script>
+
+	$(function () {
+		
+// 		申报须知弹出框
+		$("[data-toggle='popover']").popover();
+
+// 		===================↓↓↓↓↓↓↓申报的方法↓↓↓↓↓↓↓
+		$('#app_bar > ul >li').each(function(i){
+		
+			   $(this).bind('click',function(){
+				   //请求数据，并建立表格
+				   getdata(i);
+			   })
+
+		   })
+		$('#app_bar > ul >li').eq(0).click();
+
+		btn_new_click();	
+		 $('#upload_btn').bind("click",function(){
+				fileUpload();
+			});
+
+	});
+	//获取除立项申报以外的申报项目信息
+	function getdata(obj){
+		//实施申请是查询完成了立项审核的才行,所以标志obj-1
+		if(obj==0){
+			$.post("/approveProject/getAPPListByStatus.action",{status:-2},function(data){
+				if(data!=""){
+					callBackPagination(obj,data,5,10);
+				}
+				else{
+					var mainObj =  $('#mainContent'+(obj+1));
+					mainObj.html("暂无此类申请可用数据");
+				}
+			})
+		}else
+			{
+			$.post("/approveProject/getAPPListByStage.action",{stage:(obj-1)},function(data){
+				if(data!=""){
+					callBackPagination(obj,data,5,10);
+				}
+				else{
+					var mainObj =  $('#mainContent'+(obj+1));
+					mainObj.html("暂无此类申请可用数据");
+				}
+
+			})
+			}
+		
+
+
+    }
+	//初始化（拼表格+做分页）
+	function callBackPagination(stage,data,showCount,limit) {
+        createTable(1, limit, data,stage);
+      //翻页的东西
+       var tag=stage+1;
+          $('#callBackPager'+tag).extendPagination({
+              totalCount: data.length,
+              showCount: showCount,
+              limit: limit,
+              callback: function (curr, limit, totalCount) {
+                  createTable(curr, limit,data,stage);
+              }
+          });
+
+
+  }
+	//拼接表格
+	function createTable(currPage, limit,data,stage) {
+        var html = [], showNum = limit;
+        if (data.length - (currPage * limit) < 0) showNum = data.length - ((currPage - 1) * limit);
+        html.push(' <table id=table'+stage+' class="table table-hover piece" style="margin-left: 0;font-size:12px;">');
+
+        html.push(' <thead><tr><th>项目名称</th><th>项目类别</th><th>立项时间</th></thead><tbody>');
+		//数据加载
+        for(var i=0;i<showNum;i++){
+        	html.push('<tr  title="'+data[(currPage-1)*limit+i].description+'"><input type="hidden" value="'+data[(currPage-1)*limit+i].id+'"/><td style="vertical-align: inherit;">'+data[(currPage-1)*limit+i].topic+'</td><td style="vertical-align: inherit;">'+data[(currPage-1)*limit+i].category+'</td><td style="vertical-align: inherit;">'+getDateTime(new Date(data[(currPage-1)*limit+i].createtime))+'</td><td style="vertical-align: inherit;"><div class="btn-group"><button class="btn btn-sm btn-success">申请审核</button></div></td></tr>');
+        }
+        html.push('</tbody></table>');
+
+            var mainObj =  $('#mainContent'+(stage+1));
+            mainObj.empty();
+            mainObj.html(html.join(''));
+            tr_click(stage);
+            btnInTable_click(stage);
+
+    }
+	//表格行操作
+	function tr_click(stage){
+    	$('#table'+stage+' tbody >tr').each(function(){
+//     		$(this).bind('click',function(){
+//     			window.location.href="html/appdetails.html?app_id="+$(this).find("input").val();
+//     		})
+    	})
+    }
+	//获取时间的方法
+    function getDateTime(date){
+
+    	return ""+date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
+    }
+
+// 	=================================↓↓↓↓↓↓↓立项申报的方 ↓↓↓↓↓↓↓↓
+
+	//判断是否勾选了申报须知
+	function isReaded(){
+		return $('#readme').prop('checked');
+	}
+	 //查询项目类别
+    function getCategorys(){
+		 $.post("/approveProject/getCategorys.action",function(data){
+     		for(var i=0;i<data.length;i++){
+     			if(data[i].name!='根'){
+     				$('#category_id1').append("<option title='"+data[i].description+"' value='"+data[i].id+"'>"+data[i].name+"</option>");
+     			}
+
+     		}
+		 });
+    }
+	 //附件上传的ajax
+	 function fileUpload(){
+// 		 文件上传,成功时将模态框关闭。
+		 $("#fileform").ajaxSubmit({
+				type: "POST",
+				url:"/approveProject/uploadApproveAttachment.action",
+				dataType: "json",
+			    success: function(data){
+			    	$('#myF1').modal('hide');
+			     	if(data=='success'){
+			     		$.tooltip("上传成功！",2000,true);
+			     		location.href=location.href;
+			   		 }
+			    	else{
+			    		$.tooltip("上传失败！",2000,false);
+			    	}
+				}
+			});
+	 }
+	
+	 function btn_new_click(){
+		 $('#btn_new').bind('click',function(){
+			 location.href="new_shengbao.html";
+		 })
+	 }
+	 function btnInTable_click(stage){
+		 $('#table'+stage+' tbody >tr').each(function(){
+			 $(this).find("td>div>button").each(function(i){
+				$(this).bind('click',function(){
+					$.post('/approveProject/plsApprove.action',{id:$(this).parent().parent().parent().find("input").val()},function(data){
+						if(data!="failed"){
+							$('#application_id').val($(this).parent().parent().parent().find("input").val());
+							$('#myF1').modal();
+						}
+						else{
+							alert("暂时不能申请");
+						}
+					})
+					
+					
+				})
+			 })
+	    	})
+	 }
+	</script>
+</body>
+
+</html>

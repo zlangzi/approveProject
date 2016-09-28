@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="gbtags.com">
+    <title>科技部科技项目审批系统</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="/approveProject/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!-- Fonts -->
+    <link href="/approveProject/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/approveProject/css/animate.css" rel="stylesheet" />
+    <!-- Squad theme CSS -->
+    <link href="/approveProject/css/style.css" rel="stylesheet">
+    <link href="/approveProject/color/default.css" rel="stylesheet">
+    <link rel="stylesheet" href="/approveProject/css/common.css" />
+    <!-- 基本样式 -->
+    <link href="/approveProject/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="/approveProject/css/bwizard.min.css" rel="stylesheet" />
+    <link href="/approveProject/css/shengbao.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    .scrollspy-example {
+        height: 200px;
+        overflow: auto;
+        position: relative;
+    }
+    </style>
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="load"></div>
+    </div>
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <!-- /.container -->
+    </nav>
+    <!-- Section: intro -->
+    <!-- /Section: services -->
+    <article>
+        <img src="img/bg1.jpg" style="width:100%;height:200px;" alt="">
+        <div class="content container ">
+            <div class=" panel panel-default">
+                <div id="app_bar" class=" panel-heading">
+                    <h3 class="panel-titile">项目信息</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                     <form class="form-horizontal" role="form" action="" onsubmit="rerurn false">
+                        <div class="form-group">
+                            <label for="topic1" class="col-sm-2 control-label">标题</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="topic1" name="topic" value="" readonly="true" required="true">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category_id1" class="col-sm-2 control-label">领域</label>
+                            <div class="col-sm-10">
+                                <select id="category_id1" value="" readonly="true" name="category_id" class="form-control">
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="content1" class="col-sm-2 control-label">简介</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" id="content1" name="content" rows="5" value="" readonly="true" required="true"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="content1" class="col-sm-2 control-label">附件：</label>
+                            <div class="col-sm-10 " scroll name="file">
+                                <div class="list-group" data-spy="scroll" data-target="#navbarExample" data-offset="10" class="scrollspy-example">
+                                    <a href="#" class="list-group-item ">
+                                        <p class="list-group-item-text"></p>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <p class="list-group-item-text"></p>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <p class="list-group-item-text"></p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+                <details>
+                    <summary>评审信息</summary>
+                    <ul class="nav nav-tabs nav-justified">
+                        <li class="active"><a href="#nav1" data-toggle="tab">阶段</a></li>
+                        
+                    </ul>
+                    <div class="tab-content">
+                    <article class="tab-pane fade in active" style=";height:300px;" id="nav1">
+                        <aside class="col-md-3 text-left" style="font-family:微软雅黑" >
+                            <h4 style="font-family:微软雅黑;padding:20px 0 20px 20px;">结果：</h4>
+                            <div class="text-center" style="padding-top:20px;">
+                            <img id="myimage1" onclick="acess_shenghe()"  src="img/pic_bulbon.gif" width="100" height="180">
+                            <!-- 亮灯路径pic_bulbon.gif -->
+                            </div>
+                        </aside>
+                        <section class="col-md-9 text-left" style="padding:20px 30px 20px 20px;">
+
+                            <div class=" panel panel-default ">
+                                <div class="panel-titile text-center">
+                                    反馈
+                                </div>
+                                <div style="padding:5px 20px 20px 20px;height:200px;">
+                                    <!-- p标签里添反馈内容 -->
+                                    <p id="np1"></p>
+                                </div>
+                            </div>
+                        </section>
+                    </article>
+                    
+                    
+                    
+                    </div>
+                </details>
+
+            </div>
+        </div>
+    </article>
+    <div id="reglog"></div>
+    <footer></footer>
+    <!-- Core JavaScript Files -->
+    <script src="/approveProject/js/jquery.min.js"></script>
+    <script src="/approveProject/js/bootstrap.min.js"></script>
+    <script src="/approveProject/js/jquery.easing.min.js"></script>
+    <script src="/approveProject/js/jquery.scrollTo.js"></script>
+    <script src="/approveProject/js/wow.min.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="/approveProject/js/custom.js"></script>
+    <script src="/approveProject/js/jquery.hDialog.js"></script>
+    <script type="text/javascript" src="/approveProject/js/loadFile.js"></script>
+    <script type="text/javascript" src="/approveProject/js/jquery.form.js">
+    </script>
+    <script type="text/javascript" src="/approveProject/js/extendPagination.js">
+    </script>
+    <script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fac45a0f68a119fbe4d1c4c3ac3044dbd' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script>
+    function acess_shenhe()
+    {
+        element=document.getElementById('myimage')
+
+    }
+    </script>
+</body>
+
+</html>

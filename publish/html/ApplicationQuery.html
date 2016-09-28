@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+
+    <style type="text/css">
+    .main {
+        width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        /*  	background-color: #E0DCE0; */
+    }
+
+    .main table {}
+
+    .row input {
+        width: auto;
+        margin: auto;
+    }
+    	table tbody tr :hover{
+			color: #0f5fc5; /*鼠标经过的颜色变化*/
+		cursor: pointer;
+/* 		text-decoration:underline; */
+		}
+    	table thead tr th{
+    	text-align:center;
+    	}
+    </style>
+</head>
+
+<body>
+    <div class="container main">
+        <div>
+            <span style="font-weight: bold;">项目阶段选择</span>：
+            <select id="stage">
+                <option value="0">立项</option>
+                <option value="1">实施</option>
+                <option value="2">验收</option>
+                <option value="3">成果</option>
+                <option value="4">奖励</option>
+            </select>
+        </div>
+        <div  style="margin-top: 30px;">
+            <div  style="float: left;">
+                <div class="input-group">
+                    <span class="input-group-addon" style="background-color: white;">
+						<select size="auto">
+							<option>项目名</option>
+							<option>负责人</option>
+							<option>项目类型</option>
+					</select>
+					</span>
+                    <input class="form-control" style="float: left;" type="text" placeholder="关键字搜索"> <span class="input-group-btn">
+						<input class="form-control" style="float: left;" type="button"
+						value="搜索">
+					</span>
+                </div>
+            </div>
+            <div  style="float: left;padding-top:20px;width:100%">
+                <div id="mainContent">
+                	<table class="table table-hover">
+                		 <colgroup>
+			         	<col style="width:25%">
+			         	<col style="width:25%">
+			         	<col style="width:25%">
+			         	<col style="width:25%">
+
+			         	</colgroup>
+						<thead>
+							<tr>
+								<th>项目名</th>
+								<th>负责人</th>
+								<th>项目类型</th>
+								<th>立项时间</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Tanmay</td>
+								<td>Bangalore</td>
+								<td>560001</td>
+								<td>adas</td>
+							</tr>
+
+						</tbody>
+					</table>
+                </div>
+                <div id="callBackPager"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="/approveProject/js/jquery.min.js"></script>
+<link href="/approveProject/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/approveProject/js/extendPagination.js">
+</script>
+<!-- Latest compiled and minified CSS -->
+<script>
+$(function(){
+	
+	
+	selectChange();
+	$('#stage').change();
+})
+
+
+
+function getdata(stage) {
+    $.post("/approveProject/getAPPListByStage_bg.action", {
+        stage: (stage)
+    }, function(data) {
+        if (data != "") {
+            callBackPagination(stage, data, 5, 10);
+        } else {
+            var mainObj = $('#mainContent');
+            mainObj.html("暂无可用数据");
+        }
+
+    })
+
+
+}
+//初始化（拼表格+做分页）
+function callBackPagination(stage, data, showCount, limit) {
+    createTable(1, limit, data, stage);
+    //翻页的东西
+    
+    $('#callBackPager').extendPagination({
+        totalCount: data.length,
+        showCount: showCount,
+        limit: limit,
+        callback: function(curr, limit, totalCount) {
+            createTable(curr, limit, data, stage);
+        }
+    });
+
+
+}
+//拼接表格
+function createTable(currPage, limit, data, stage) {
+    var html = [],
+        showNum = limit;
+    if (data.length - (currPage * limit) < 0) showNum = data.length - ((currPage - 1) * limit);
+    html.push(' <table id=table' + stage + ' class="table table-hover piece" style="margin-left: 0;font-size:12px;">');
+
+    html.push(' <thead><tr><th>项目名称</th><th>负责人</th><th>项目类别</th><th>立项时间</th></thead><tbody>');
+    //数据加载
+    for (var i = 0; i < showNum; i++) {
+        html.push('<tr  title="' + data[(currPage - 1) * limit + i].description + '"><input type="hidden" value="' + data[(currPage - 1) * limit + i].id + '"/><td style="vertical-align: inherit;">' + data[(currPage - 1) * limit + i].topic + '</td><td style="vertical-align: inherit;">' + data[(currPage - 1) * limit + i].leaderName + '</td><td style="vertical-align: inherit;">' + data[(currPage - 1) * limit + i].category + '</td><td style="vertical-align: inherit;">' + getDateTime(new Date(data[(currPage - 1) * limit + i].createtime)) + '</td></tr>');
+    }
+    html.push('</tbody></table>');
+
+    var mainObj = $('#mainContent');
+    mainObj.empty();
+    mainObj.html(html.join(''));
+    tr_click(stage);
+
+}
+
+function selectChange(){
+	$('#stage').change(function(){
+		var stage=$(this).val();
+		
+		getdata(stage);
+		
+	})
+}
+function getDateTime(date){
+	
+	return ""+date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
+}
+//表格行操作
+function tr_click(stage){
+	$('#table'+stage+' tbody >tr').each(function(){
+		$(this).bind('click',function(){
+			window.location.href="/approveProject/html/appdetails.html?app_id="+$(this).find("input").val();
+		})
+	})
+}
+</script>
+
+</html>

@@ -1,0 +1,375 @@
+<div id="HBox">
+	<form id="regForm" name="user">
+		<ul class="list">
+			<li><strong>用户名 <font color="#ff0000">*</font></strong>
+				<div class="fl">
+					<input type="text" name="username" value="" class="ipt username" />
+				</div></li>
+			<li><strong>密 码 <font color="#ff0000">*</font></strong>
+				<div class="fl">
+					<input type="password" name="password" value=""
+						class="ipt password" />
+				</div></li>
+			<li><strong>请再次输入密码 <font color="#ff0000">*</font></strong>
+				<div class="fl">
+					<input type="password" name="password2" value=""
+						class="ipt password2" />
+				</div></li>
+			<li><strong>姓 名 <font color="#ff0000">*</font></strong>
+				<div class="fl">
+					<input type="text" name="name" value="" class="ipt name" />
+				</div></li>
+			<li><strong>性 别 <font color="#ff0000">*</font></strong>
+
+				<div class="fl">
+					<label class="mr10"> <input type="radio" name="gender"
+						value="1" checked="" />男
+					</label> <label class="mr10"> <input type="radio" name="gender"
+						value="2" />女
+					</label>
+
+				</div></li>
+			<li><strong>身份证 <font color="#ff0000">*</font></strong>
+				<div class="fl">
+					<input type="text" name="idcard" value="" class="ipt idcard" />
+				</div></li>
+			<li><strong>手 机 <font color="#ff0000">*</font></strong>
+				<div class="fl">
+					<input type="text" name="phone" value="" class="ipt phone" />
+				</div></li>
+			<li><strong>邮 箱 <font color="#ff0000">*</font></strong>
+				<div class="fl">
+					<input type="text" name="email" value="" class="ipt email" />
+				</div></li>
+
+
+
+			<li><input type="button" value="确认提交"
+				class="submitBtn signup-action" /></li>
+		</ul>
+	</form>
+</div>
+
+
+
+<!-- HBox end -->
+<div id="HBox2">
+	<form id="loginForm" name="user">
+		<ul class="list">
+			<li><strong>用户名 <font color="#ff0000">*</font></strong>
+				<div class="f1">
+					<input type="text" name="usernameLog" value=""
+						class="ipt username-log" />
+				</div>
+			</li>
+			<li><strong>密 码 <font color="#ff0000">*</font></strong>
+				<div class="f1">
+					<input type="password" name="passwordLog" value=""
+						class="ipt password-log" />
+				</div></li>
+
+			<li><input type="button" value="确认提交"
+				class="submitBtn login-action"/></li>
+		</ul>
+	</form>
+</div>
+
+
+<script>
+	var EmailReg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/; //邮件正则
+    var PhoneReg = /^0{0,1}(13[0-9]|15[0-9]|153|156|18[1-9])[0-9]{8}$/ ; //手机正则
+    var passwordReg = /^[a-z0-9_-]{6,18}$/;
+    var usernameReg = /^[a-z0-9_-]{3,16}$/;
+    var idcardReg = /^(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$/;
+    var $username = $('.username');
+    var $password = $('.password');
+    var $password2 = $('.password2');
+    var $name = $('.name');
+    var $gender = $('.gender');
+    var $idcard = $('.idcard');
+    var $phone = $('.phone');
+    var $email = $('.email');
+    var $e1 = $('.dialog');
+    var usernameCheck=false;
+        $(function(){
+           
+            $e1.hDialog({
+                title: '基本用户注册',
+                width:400,
+                height: 500,
+
+                resetForm: false,
+                position: 'top'
+            });
+            
+            $username.blur(function() {
+                /* Act on the event */
+                if($username.val() == ''){
+                    $.tooltip('用户名还没填呢...');
+                }else if(!usernameReg.test($username.val())){
+                    $.tooltip('请输入3到18位，字母或数字的组合的用户名...')
+                }else{
+                	isAviliable($username.val());
+                }
+                	
+            });
+
+            $password.blur(function() {
+                /* Act on the event */
+                if($password.val() == ''){
+                    $.tooltip('密码还没填呢...');
+                }else if(!passwordReg.test($password.val())){
+                     $.tooltip('请输入6到18位，字母或数字的组合的密码...');
+                }
+            });
+
+            $password2.blur(function() {
+                /* Act on the event */
+                if($password2.val() != $password.val()){
+                    $.tooltip('请输入相同的密码...');
+                }
+            });
+            $name.blur(function() {
+                /* Act on the event */
+                if($name.val() == ''){
+                    $.tooltip('姓名还没填呢...');
+                }
+            });
+            $idcard.blur(function() {
+                /* Act on the event */
+                if($idcard.val() == ''){
+                    $.tooltip('身份证号还没填呢...');
+                }else if(!idcardReg.test($idcard.val())){
+                    $.tooltip('请输入正确的身份证号码...');
+                }
+            });
+            $phone.blur(function() {
+                /* Act on the event */
+                if($phone.val() == ''){
+                    $.tooltip('电话号还没填呢...');
+                }else if(!PhoneReg.test($phone.val())){
+                    $.tooltip('请输入正确的电话号码...');
+                }
+            });
+            $email.blur(function() {
+                /* Act on the event */
+                if($email.val() == ''){
+                    $.tooltip('邮箱还没填呢...');
+                }else if(!EmailReg.test($email.val())){
+                    $.tooltip('请输入正确的邮箱...');
+                }
+            });
+            //注册按钮点击事件
+            $('.signup-action').click(function(){
+            	//验证通过，提交表单，异步提交
+            	if(reg_check()){
+            		
+            		$.post("/approveProject/register.action",
+            				$('#regForm').serialize(),
+            				function(success){
+            					if(success=="success"){
+            						getSession();
+            						$e1.hDialog('close',{box:'#HBox'});
+	           		                $.tooltip('注册成功!',2000,true);
+	           		                 
+            					}
+            					else{
+            						$.tooltip('注册失败!',2000,false);
+            					}
+            		});
+            	}
+            });
+        });
+        //注册验证
+        function reg_check() {
+
+            if($username.val() == ''){
+                $.tooltip('用户名还没填呢...');
+                return false;
+            }else if(!usernameReg.test($username.val())){
+                $.tooltip('请输入3到18位，字母或数字的组合的用户名...')
+                return false;
+            }else if($password.val() == ''){
+                $.tooltip('密码还没填呢...');
+                return false;
+            }else if(!passwordReg.test($password.val())){
+                 $.tooltip('请输入6到18位，字母或数字的组合的密码...');
+                 return false;
+            }else if($password2.val() != $password.val()){
+                $.tooltip('请输入相同的密码...');
+                return false;
+            }else if($name.val() == ''){
+                $.tooltip('姓名还没填呢...');
+                return false;
+            }else if($idcard.val() == ''){
+                $.tooltip('身份证号还没填呢...');
+                return false;
+            }else if(!idcardReg.test($idcard.val())){
+                $.tooltip('请输入正确的身份证号码...');
+                return false;
+            }else if($phone.val() == ''){
+                $.tooltip('电话号还没填呢...');
+                return false;
+            }else if(!PhoneReg.test($phone.val())){
+                $.tooltip('请输入正确的电话号码...');
+                return false;
+            }else if($email.val() == ''){
+                $.tooltip('邮箱还没填呢...');
+                return false;
+            }else if(!EmailReg.test($email.val())){
+                $.tooltip('请输入正确的邮箱...');
+                return false;
+            }else{
+				if(usernameCheck){
+					return true;
+				}
+				else{
+					$.tooltip("用户名已存在",2000,false);
+					return false;
+				}
+				
+            	
+            }
+        }
+        function isAviliable(username){
+        	
+        	$.post("/approveProject/checkUsername.action",{username:username},function(data){
+        		if(data=="OK"){
+        			usernameCheck= true;
+        		}
+        		else{
+        			usernameCheck= false;
+        		}
+        	});
+        	
+        }
+
+    </script>
+<script>
+	var passwordReg = /^[a-z0-9_-]{6,18}$/;
+    var usernameReg = /^[a-z0-9_-]{3,16}$/;
+    var $usernamelog = $('.username-log');
+    var $passwordlog = $('.password-log');
+        $(function(){
+            var $e2 = $('.login-dialog');
+            $e2.hDialog({
+                box: '#HBox2',
+                title: '用户登录',
+
+            });
+            
+            $usernamelog.blur(function() {
+                /* Act on the event */
+                if($usernamelog.val() == ''){
+
+                    $.tooltip('用户名还没填呢...');
+                }else if(!usernameReg.test($usernamelog.val())){
+                    $.tooltip('请输入3到18位，字母或数字的组合的用户名...')
+                }
+            });
+
+            $passwordlog.blur(function() {
+                /* Act on the event */
+                if($passwordlog.val() == ''){
+                    $.tooltip('密码还没填呢...');
+                }else if(!passwordReg.test($passwordlog.val())){
+                     $.tooltip('请输入6到18位，字母或数字的组合的密码...');
+                }
+            });
+//          登陆
+            $('.login-action').click(function() {
+            	if(login_check()){
+            	$.post("login.action",$("#loginForm").serialize(),function(data){
+            		if(data!=""){
+            			getSession ();
+						$e2.hDialog('close',{box:'#HBox2'});
+						$.tooltip("登陆成功",4000,true);
+            		}
+            		else
+            			$.tooltip("用户名或密码错误！",3000,false);
+            	})
+            	}
+            });
+            getSession ();
+        });
+//      login form data check
+        function login_check() {
+            if($usernamelog.val()==""){
+                $.tooltip('用户名还没填呢...');
+                return false;
+            }else if(!usernameReg.test($usernamelog.val())){
+                $.tooltip('请输入3到18位，字母或数字的组合的用户名...')
+                return false;
+            }else if($passwordlog.val() == ''){
+                $.tooltip('密码还没填呢...');
+                return false;
+            }else if(!passwordReg.test($passwordlog.val())){
+                 $.tooltip('请输入6到18位，字母或数字的组合的密码...');
+                 return false;
+            }else{
+				return true;
+            }
+        }
+        //访问session中的参数，页面登录状态保持
+       function getSession (){
+    	   $.get("/approveProject/getSession.action",function(data){
+    		   	
+    		   	changeStatus(data);
+    		   	
+    	   });
+       };
+        function changeStatus(data){
+        	 var user =data.user;
+             var expand=data.expand;
+             console.log(data);
+        	if(user!=null){
+        	var e3  = $('.user-ul');
+        	e3.empty();//功能栏清空
+        	
+            var e5 = $(".user-a");
+           
+            
+			if(user.role_id==null){
+        		//身份验证
+        		e5.html("欢迎您！初始账户：");//填充用户名
+        		e3.append('<li><a href="/approveProject/identify.html" class="rotateInDownRight ">身份申请</a></li>')
+        		
+        	}
+			else if(user.role_id==1){
+				//管理员 后台页面
+				e5.html("欢迎您！管理员：");//填充用户名
+				e3.append('<li><a href="/approveProject/bg_management.html" class="rotateInDownRight ">后台管理</a></li>')
+			}else if(user.role_id==2 && expand.passed==1){
+				//项目负责人
+				e5.html("欢迎您！项目负责人：");//填充用户名
+				e3.append('<li><a href="/approveProject/user_center_project_shengbao.html" class="rotateInDownRight ">项目状态查看</a></li>')
+				e3.append('<li><a href="/approveProject/shengbao.html" class="rotateInDownRight ">项目申报</a></li>')
+				
+			}else if(user.role_id==3 && expand.passed==1){
+				//审核专家
+				e5.html("欢迎您！专家：");//填充用户名
+				e3.append('<li><a href="/approveProject/user_center_project_shenghe.html" class="rotateInDownRight ">项目状态查看</a></li>')
+				e3.append('<li><a href="/approveProject/shenghe.html" class="rotateInDownRight ">项目审核</a></li>')
+			}
+			else {
+				e5.html("欢迎您！初始账户：");//填充用户名
+				e3.append('<li><a href="#" class="rotateInDownRight ">身份验证中，多看看公告</a></li>')
+			}
+			e5.append(user.username+"<span class='glyphicon glyphicon-chevron-down'></span>")
+			e3.append('<li><a href="/approveProject/user_message.html" class="rotateInDownRight ">个人信息</a></li>')
+            e3.append('<li><a href="#" id="logout"  class="rotateInDownRight login-dialog">退出</a></li>');
+// 			window.location.href=$('#center').val();
+			$('#logout').bind('click',function(){
+				logout();
+			})
+			$('#reglog').remove();
+        	}
+        	
+        }
+        function logout(){
+        	$.post("/approveProject/logout.action",function(status){
+        		window.location.href="/approveProject/";//windows对象
+        	});//注销
+        	
+        }
+    </script>

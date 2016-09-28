@@ -1,0 +1,9 @@
+.text_charts {
+    width: 100%;
+    display: block;
+    line-height: 1.5em;
+    overflow: visible;
+    font-size: 22px;
+    font-family: 微软雅黑;
+    text-shadow: #f3f3f3 1px 1px 0px, #b2b2b2 1px 2px 0
+}
